@@ -1,0 +1,14 @@
+{
+  //  "exclude": [
+  //    "node_modules"
+  //  ],
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["*"],
+      "@@/*": [".umi/*"],
+      "test-utils": ["test/lib/testUtils"]
+    }
+  }
+}

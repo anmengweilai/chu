@@ -1,0 +1,13 @@
+node_modules
+.chu
+.chu-production
+dist
+*.d.ts
+compiled
+*.js
+fixtures
+*.md
+*.yaml
+*.less
+.turbo
+
