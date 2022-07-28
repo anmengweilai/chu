@@ -1,5 +1,5 @@
 {
-  "name": "chu-cli",
+  "name": "chu",
   "version": "1.0.0",
   "private": true,
   "keywords": [],
@@ -16,8 +16,11 @@
     "format": "prettier --write .",
     "format:docs": "prettier 'docs/**/*.{md,mdx}' --write --ignore-path .gitignore --ignore-unknown",
     "format:plugin-docs": "prettier 'packages/plugin-docs/**/*' --write --ignore-unknown",
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "chu-scripts postinstall",
     "jest": "jest",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "turbo:clean": "rimraf .turbo"
   },
   "lint-staged": {
     "*.{jsx,less,md,json}": [

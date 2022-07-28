@@ -2,7 +2,7 @@
   "name": "chu-scripts",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
+  "bin": {
     "chu-scripts": "bin/chu-scripts.js"
   }
 }
