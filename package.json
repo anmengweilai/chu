@@ -31,6 +31,15 @@
       "prettier --cache --parser=typescript --write"
     ]
   },
+  "dependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^28.1.6",
+    "@types/resolve": "^1.20.2",
+    "@vercel/ncc": "^0.34.0",
+    "dts-packer": "^0.0.3",
+    "fs-extra": "^10.1.0",
+    "resolve": "^1.22.1"
+  },
   "devDependencies": {
     "@types/node": "^17.0.12",
     "eslint-config-custom": "workspace:*",
