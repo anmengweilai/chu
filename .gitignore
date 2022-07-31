@@ -157,3 +157,6 @@ dist
 
 # vscode
 .vscode
+
+/esbuild-kit
+/esbuild-kit/*

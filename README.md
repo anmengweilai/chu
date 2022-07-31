@@ -75,3 +75,16 @@ Learn more about the power of Turborepo:
 - [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
 - [Configuration Options](https://turborepo.org/docs/reference/configuration)
 - [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
+
+
+
+## 新增 package
+
+新增 package 有封装脚本，无需手动复制 `package.json` 等文件：
+
+```bash
+# 创建 package 目录
+$ mkdir packages/foo
+# 初始化 package 开发
+$ pnpm bootstrap
+```
