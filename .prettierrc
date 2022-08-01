@@ -3,6 +3,17 @@
   "singleQuote": true,
   "trailingComma": "all",
   "proseWrap": "never",
-  "overrides": [{ "files": ".prettierrc", "options": { "parser": "json" } }],
-  "plugins": ["prettier-plugin-packagejson", "./scripts/prettier-plugin"]
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ],
+  "plugins": [
+    "prettier-plugin-packagejson",
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-organize-imports"
+  ]
 }
