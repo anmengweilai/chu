@@ -48,11 +48,11 @@ export function setExcludeFolder(opts: {
   const dirName = opts.dirName || 'packages';
   const folders = opts.folders || ['dist', 'compiled', '.turbo'];
   if (!existsSync(join(opts.cwd, '.idea'))) return;
-  const configPath = join(opts.cwd, '.idea'); // 'chu.iml'
+  const configPath = join(opts.cwd, '.idea', 'chu.iml'); // 'chu.iml'
   let content = readFileSync(configPath, 'utf-8');
   for (const folder of folders) {
     const excludeContent = `<excludeFolder url='file://$MODULE_DIR$/${dirName}/${opts.pkg}/${folder}' />`;
-    const replaceMatcher = `<content url="file://$MODULE_DIR$">`;
+    const replaceMatcher = `<content url='file://$MODULE_DIR$'>`;
     if (!content.includes(excludeContent)) {
       content = content.replace(
         replaceMatcher,

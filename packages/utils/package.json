@@ -1,12 +1,12 @@
 {
-  "name": "@umijs/utils",
+  "name": "@chu/utils",
   "version": "1.0.0",
-  "description": "@umijs/utils",
-  "homepage": "https://github.com/umijs/umi/tree/master/packages/utils#readme",
-  "bugs": "https://github.com/umijs/umi/issues",
+  "description": "@chu/utils",
+  "homepage": "https://github.com/anmengweilai/chu/tree/master/packages/utils#readme",
+  "bugs": "https://github.com/anmengweilai/chu/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/umijs/umi"
+    "url": "https://github.com/anmengweilai/chu"
   },
   "license": "MIT",
   "main": "dist/index.js",
@@ -23,6 +23,6 @@
     "access": "public"
   },
   "authors": [
-    "chencheng <sorrycc@gmail.com> (https://github.com/sorrycc)"
+    "anmengweilai <chumengyouying@outlook.com> (https://github.com/anmengweilai)"
   ]
 }
