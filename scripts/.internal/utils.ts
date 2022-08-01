@@ -1,8 +1,7 @@
 // import * as logger from ;
-import type { SpawnSyncOptions } from 'child_process';
+
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import spawn from '../compiled/cross-spawn';
 import { PATHS } from './constants';
 
 export function getPkgs(opts?: { base?: string }): string[] {

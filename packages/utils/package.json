@@ -19,10 +19,67 @@
     "build:deps": "chu-scripts bundleDeps",
     "dev": "pnpm build --watch"
   },
+  "dependencies": {
+    "chalk": "5.0.1",
+    "pino": "^8.3.1"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.3",
+    "@types/cross-spawn": "6.0.2",
+    "@types/debug": "4.1.7",
+    "@types/glob": "^7.2.0",
+    "@types/lodash": "4.14.182",
+    "@types/prompts": "^2.0.14",
+    "@types/rimraf": "3.0.2",
+    "@types/semver": "7.3.9",
+    "@types/yargs-parser": "^21.0.0",
+    "color": "^4.2.3",
+    "cross-spawn": "7.0.3",
+    "debug": "^4.3.4",
+    "deepmerge": "^4.2.2",
+    "execa": "^6.1.0",
+    "fs-extra": "^10.1.0",
+    "glob": "^8.0.3",
+    "import-lazy": "^4.0.0",
+    "lodash": "^4.17.21",
+    "prompts": "^2.4.2",
+    "rimraf": "^3.0.2",
+    "semver": "^7.3.7",
+    "strip-ansi": "^7.0.1",
+    "yargs-parser": "^21.0.1"
+  },
   "publishConfig": {
     "access": "public"
   },
   "authors": [
     "anmengweilai <chumengyouying@outlook.com> (https://github.com/anmengweilai)"
-  ]
+  ],
+  "compiledConfig": {
+    "deps": [
+      "color",
+      "cross-spawn",
+      "debug",
+      "deepmerge",
+      "fs-extra",
+      "import-lazy",
+      "lodash",
+      "prompts",
+      "rimraf",
+      "glob",
+      "semver",
+      "strip-ansi",
+      "yargs-parser"
+    ],
+    "externals": {
+      "cross-spawn": "$$LOCAL",
+      "debug": "$$LOCAL",
+      "fs-extra": "$$LOCAL",
+      "import-lazy": "$$LOCAL",
+      "lodash": "$$LOCAL",
+      "rimraf": "$$LOCAL",
+      "semver": "$$LOCAL",
+      "strip-ansi": "$$LOCAL",
+      "yargs-parser": "$$LOCAL"
+    }
+  }
 }

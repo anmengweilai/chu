@@ -7,7 +7,6 @@
   "author": "",
   "main": "index.js",
   "workspaces": [
-    "apps/*",
     "packages/*"
   ],
   "scripts": {
@@ -34,17 +33,19 @@
     ]
   },
   "devDependencies": {
+    "@chu/utils": "workspace:*",
+    "@pnpm/lockfile-file": "^5.3.1",
+    "@pnpm/logger": "^4.0.0",
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
     "@types/cross-spawn": "^6.0.2",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^28.1.6",
     "@types/node": "^17.0.12",
     "@types/resolve": "^1.20.2",
-    "@vercel/ncc": "^0.34.0",
+    "@vercel/ncc": "0.33.3",
     "chalk": "5.0.1",
     "cross-spawn": "7.0.3",
     "dts-packer": "^0.0.3",
-    "esno": "^0.16.3",
     "fs-extra": "^10.1.0",
     "husky": "^8.0.1",
     "jest": "^28.1.2",

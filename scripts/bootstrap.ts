@@ -137,9 +137,8 @@ import { setExcludeFolder } from './.internal/utils';
       setExcludeFolder({ pkg: opts.pkg, cwd: root });
 
       console.log(chalk.green(`${opts.pkg} bootstrapped`));
-
-      await $`chmod -R 777 *`;
-      await $`pnpm format`;
     }
+    await $`chmod -R 777 *`;
+    await $`pnpm format`;
   }
 })();

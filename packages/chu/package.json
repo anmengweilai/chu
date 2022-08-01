@@ -1,0 +1,28 @@
+{
+  "name": "chu",
+  "version": "1.0.0",
+  "description": "chu",
+  "homepage": "https://github.com/anmengweilai/chu/tree/master/packages/chu#readme",
+  "bugs": "https://github.com/anmengweilai/chu/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anmengweilai/chu"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm tsc",
+    "build:deps": "chu-scripts bundleDeps",
+    "dev": "pnpm build --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "authors": [
+    "anmengweilai <chumengyouying@outlook.com> (https://github.com/anmengweilai)"
+  ]
+}
