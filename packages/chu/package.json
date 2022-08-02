@@ -15,9 +15,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup --dts",
+    "build": "chu-scripts father build",
     "build:deps": "chu-scripts bundleDeps",
-    "dev": "pnpm build --watch"
+    "dev": "umi-scripts father dev"
   },
   "dependencies": {
     "@chu/utils": "workspace:^1.0.0"

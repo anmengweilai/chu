@@ -2,7 +2,7 @@ export default () => {
   return '@chu/utils';
 };
 
-import chalk from 'chalk';
+import chalk from '../compiled/chalk';
 import crossSpawn from '../compiled/cross-spawn';
 import debug from '../compiled/debug';
 import deepmerge from '../compiled/deepmerge';

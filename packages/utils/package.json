@@ -17,10 +17,9 @@
   "scripts": {
     "build": "chu-scripts father build",
     "build:deps": "chu-scripts bundleDeps",
-    "dev": "pnpm build --watch"
+    "dev": "umi-scripts father dev"
   },
   "dependencies": {
-    "chalk": "5.0.1",
     "pino": "^8.3.1"
   },
   "devDependencies": {
@@ -33,6 +32,7 @@
     "@types/rimraf": "3.0.2",
     "@types/semver": "7.3.9",
     "@types/yargs-parser": "^21.0.0",
+    "chalk": "5.0.1",
     "color": "^4.2.3",
     "cross-spawn": "7.0.3",
     "debug": "^4.3.4",
@@ -56,6 +56,7 @@
   ],
   "compiledConfig": {
     "deps": [
+      "chalk",
       "color",
       "cross-spawn",
       "debug",
@@ -71,6 +72,7 @@
       "yargs-parser"
     ],
     "externals": {
+      "chalk": "$$LOCAL",
       "cross-spawn": "$$LOCAL",
       "debug": "$$LOCAL",
       "fs-extra": "$$LOCAL",

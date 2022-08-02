@@ -4,7 +4,9 @@ const { join } = require('path');
 const assert = require('assert');
 const { existsSync } = require('fs');
 const { sync } = require('@chu/utils/compiled/cross-spawn');
-const { chalk } = require('@chu/utils');
+// const { sync } = require('cross-spawn');
+// const chalk = require('../compiled/chalk').default;
+const chalk = require('@chu/utils/compiled/chalk').default;
 
 const argv = process.argv.slice(2);
 const [name, ...throughArgs] = argv;
@@ -16,7 +18,7 @@ assert(
     `Executed script '${name}' does not exist`,
 );
 
-console.log(`chu-scripts: ${name}\n`);
+// console.log(`chu-scripts: ${name}\n`);
 console.log(chalk.cyan(`chu-scripts: ${name}\n`));
 
 // for pass all params
@@ -37,7 +39,7 @@ try {
 
   if (spawn.status !== 0) {
     console.log(chalk.red(`chu-scripts: ${name} execute fail`));
-    console.log(`chu-scripts: ${name} execute fail`);
+    // console.log(`chu-scripts: ${name} execute fail`);
     process.exit(1);
   }
 } catch (e) {

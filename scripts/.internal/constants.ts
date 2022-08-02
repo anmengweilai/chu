@@ -11,7 +11,7 @@ export const PATHS = {
 
 export const SCRIPTS = {
   BUNDLE_DEPS: 'chu-scripts bundleDeps',
-  DEV: 'pnpm build --watch',
-  BUILD: 'pnpm tsc',
+  DEV: 'chu-scripts father dev',
+  BUILD: 'chu-scripts father build',
   TEST_TURBO: 'chu-scripts jest-turbo',
 } as const;
