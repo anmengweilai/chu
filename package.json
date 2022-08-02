@@ -43,8 +43,6 @@
     "@types/node": "^17.0.12",
     "@types/resolve": "^1.20.2",
     "@vercel/ncc": "0.33.3",
-    "chalk": "5.0.1",
-    "cross-spawn": "7.0.3",
     "dts-packer": "^0.0.3",
     "father": "^4.0.0-rc.7",
     "fs-extra": "^10.1.0",
