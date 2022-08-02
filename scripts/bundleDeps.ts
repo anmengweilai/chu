@@ -279,12 +279,32 @@ Object.keys(exported).forEach(function (key) {
       if (opts.noDts) {
         console.log(chalk.yellow(`Do not build dts for ${opts.pkgName}`));
       } else {
-        new Package({
-          cwd: opts.base,
-          name: opts.pkgName,
-          typesRoot: target,
-          externals: opts.dtsExternals,
-        });
+        try {
+          new Package({
+            cwd: opts.base,
+            name: opts.pkgName,
+            typesRoot: target,
+            externals: opts.dtsExternals,
+          });
+        } catch (e) {
+          if (opts.pkgName === 'chalk') {
+            const filePath = path.join(
+              target,
+              'source/vendor/supports-color/index.d.ts',
+            );
+            console.log({ filePath });
+            fs.writeFileSync(
+              filePath,
+              fs
+                .readFileSync(filePath, 'utf-8')
+                .replace(
+                  "import {WriteStream} from '../../../node:tty';\n",
+                  "import {WriteStream} from 'node:tty';\n",
+                ),
+              'utf-8',
+            );
+          }
+        }
 
         // patch
         if (opts.pkgName === 'webpack-5-chain') {

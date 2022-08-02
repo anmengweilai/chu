@@ -5,8 +5,8 @@ const assert = require('assert');
 const { existsSync } = require('fs');
 const { sync } = require('@chu/utils/compiled/cross-spawn');
 // const { sync } = require('cross-spawn');
-// const chalk = require('../compiled/chalk').default;
-const chalk = require('@chu/utils/compiled/chalk').default;
+const chalk = require('../compiled/chalk').default;
+// const chalk = require('@chu/utils/compiled/chalk').default;
 
 const argv = process.argv.slice(2);
 const [name, ...throughArgs] = argv;
