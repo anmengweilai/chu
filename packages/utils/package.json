@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "chu-scripts father build",
     "build:deps": "chu-scripts bundleDeps",
     "dev": "pnpm build --watch"
   },

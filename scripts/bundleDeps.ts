@@ -705,9 +705,24 @@ Object.keys(exported).forEach(function (key) {
             'utf-8',
           );
         }
+
         if (opts.pkgName === 'lodash') {
-          // TODO
-          // fs.copySync()
+          // TODO  需要将 @types/lodash中 commons下申明复制
+          const commonPath = path.join(
+            opts.base,
+            '/node_modules/@types/lodash/common',
+          );
+          await fs.mkdirp(opts.base + '/compiled/lodash/common');
+          const commonFiles = fs.readdirSync(commonPath, { encoding: 'utf-8' });
+          console.log({ commonFiles });
+          commonFiles.forEach((name) => {
+            const dtsPath = path.join(
+              opts.base,
+              `compiled/lodash/common/${name}`,
+            );
+
+            fs.copyFileSync(path.join(commonPath, name), dtsPath);
+          });
         }
 
         // for bundler-utils

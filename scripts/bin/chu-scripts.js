@@ -3,8 +3,8 @@
 const { join } = require('path');
 const assert = require('assert');
 const { existsSync } = require('fs');
-const { sync } = require('../compiled/cross-spawn');
-// const chalk = require('chalk');
+const { sync } = require('@chu/utils/compiled/cross-spawn');
+const { chalk } = require('@chu/utils');
 
 const argv = process.argv.slice(2);
 const [name, ...throughArgs] = argv;
@@ -12,12 +12,12 @@ const scriptsPath = join(__dirname, `../${name}.ts`);
 
 assert(
   existsSync(scriptsPath) && !name.startsWith('.'),
-  // `Executed script '${chalk.red(name)}' does not exist`,
-  `Executed script '${name}' does not exist`,
+  `Executed script '${chalk.red(name)}' does not exist` +
+    `Executed script '${name}' does not exist`,
 );
 
 console.log(`chu-scripts: ${name}\n`);
-// console.log(chalk.cyan(`chu-scripts: ${name}\n`));
+console.log(chalk.cyan(`chu-scripts: ${name}\n`));
 
 // for pass all params
 // e.g. umi-scripts bundleDeps --dep chalk
@@ -36,7 +36,7 @@ try {
   });
 
   if (spawn.status !== 0) {
-    // console.log(chalk.red(`chu-scripts: ${name} execute fail`));
+    console.log(chalk.red(`chu-scripts: ${name} execute fail`));
     console.log(`chu-scripts: ${name} execute fail`);
     process.exit(1);
   }

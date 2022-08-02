@@ -93,6 +93,7 @@ import { setExcludeFolder } from './.internal/utils';
         'utf-8',
       );
 
+      //fatherrc.base.ts
       await fs.writeFile(
         path.join(pkgDir, 'tsconfig.json'),
         JSON.stringify({
@@ -103,6 +104,25 @@ import { setExcludeFolder } from './.internal/utils';
           },
           include: ['src'],
         }),
+        'utf-8',
+      );
+
+      //tsconfig.json
+      await fs.writeFile(
+        path.join(pkgDir, '.fatherrc.base.ts'),
+        `import { defineConfig } from 'father';
+
+export default defineConfig({
+  extends: '../../.fatherrc.base.ts',
+  cjs: {
+    ignores: ['src/client/**'],
+  },
+  esm: {
+    input: 'src/client',
+    output: 'client/client',
+  },
+});
+`,
         'utf-8',
       );
 
