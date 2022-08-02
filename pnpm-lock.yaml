@@ -23,7 +23,7 @@ importers:
       lerna: ^5.3.0
       lint-staged: ^13.0.3
       prettier: ^2.7.1
-      prettier-plugin-organize-imports: 2.3.4
+      prettier-plugin-organize-imports: 3.0.1
       prettier-plugin-packagejson: ^2.2.18
       resolve: ^1.22.1
       ts-node: ^10.8.2
@@ -52,7 +52,7 @@ importers:
       lerna: 5.3.0
       lint-staged: registry.npmmirror.com/lint-staged/13.0.3
       prettier: registry.npmmirror.com/prettier/2.7.1
-      prettier-plugin-organize-imports: 2.3.4_gd3y7r3s3evy6b2vthd7dmacga
+      prettier-plugin-organize-imports: 3.0.1_gd3y7r3s3evy6b2vthd7dmacga
       prettier-plugin-packagejson: registry.npmmirror.com/prettier-plugin-packagejson/2.2.18_prettier@2.7.1
       resolve: 1.22.1
       ts-node: registry.npmmirror.com/ts-node/10.8.2_x2utdhayajzrh747hktprshhby
@@ -64,13 +64,17 @@ importers:
 
   packages/chu:
     specifiers:
+      '@babel/runtime': ^7.18.9
       '@chu/utils': workspace:^1.0.0
     dependencies:
       '@chu/utils': link:../utils
+    devDependencies:
+      '@babel/runtime': 7.18.9
 
   packages/utils:
     specifiers:
       '@types/color': ^3.0.3
+      '@types/commander': ^2.12.2
       '@types/cross-spawn': 6.0.2
       '@types/debug': 4.1.7
       '@types/glob': ^7.2.0
@@ -81,6 +85,7 @@ importers:
       '@types/yargs-parser': ^21.0.0
       chalk: 5.0.1
       color: ^4.2.3
+      commander: ^9.4.0
       cross-spawn: 7.0.3
       debug: ^4.3.4
       deepmerge: ^4.2.2
@@ -96,10 +101,10 @@ importers:
       strip-ansi: ^7.0.1
       yargs-parser: ^21.0.1
     dependencies:
-      chalk: 5.0.1
       pino: 8.3.1
     devDependencies:
       '@types/color': 3.0.3
+      '@types/commander': 2.12.2
       '@types/cross-spawn': 6.0.2
       '@types/debug': 4.1.7
       '@types/glob': 7.2.0
@@ -108,7 +113,9 @@ importers:
       '@types/rimraf': 3.0.2
       '@types/semver': 7.3.9
       '@types/yargs-parser': 21.0.0
+      chalk: 5.0.1
       color: 4.2.3
+      commander: 9.4.0
       cross-spawn: 7.0.3
       debug: 4.3.4
       deepmerge: 4.2.2
@@ -2224,6 +2231,13 @@ packages:
       '@types/color-convert': 2.0.0
     dev: true
 
+  /@types/commander/2.12.2:
+    resolution: {integrity: sha512-0QEFiR8ljcHp9bAbWxecjVRuAMr16ivPiGOw6KFQBVrVd0RQIcM3xKdRisH2EDWgVWujiYtHwhSkSUoAAGzH7Q==}
+    deprecated: This is a stub types definition for commander (https://github.com/tj/commander.js). commander provides its own type definitions, so you don't need @types/commander installed!
+    dependencies:
+      commander: 9.4.0
+    dev: true
+
   /@types/cross-spawn/6.0.2:
     resolution: {integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==}
     dependencies:
@@ -3070,6 +3084,7 @@ packages:
   /chalk/5.0.1:
     resolution: {integrity: sha512-Fo07WOYGqMfCWHOzSXOt2CxDbC6skS/jO9ynEcmpANMoPrD+W1r1K6Vx7iNm+AQmETU1Xr2t+n8nzkV9t6xh3w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+    dev: true
 
   /chardet/0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
@@ -3236,6 +3251,11 @@ packages:
   /commander/7.2.0:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
     engines: {node: '>= 10'}
+    dev: true
+
+  /commander/9.4.0:
+    resolution: {integrity: sha512-sRPT+umqkz90UA8M1yqYfnHlZA7fF6nSphDtxeywPZ49ysjxDQybzk13CL+mXekDRG92skbcqCLVovuCusNmFw==}
+    engines: {node: ^12.20.0 || >=14}
     dev: true
 
   /common-ancestor-path/1.0.1:
@@ -7484,11 +7504,15 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /prettier-plugin-organize-imports/2.3.4_gd3y7r3s3evy6b2vthd7dmacga:
-    resolution: {integrity: sha512-R8o23sf5iVL/U71h9SFUdhdOEPsi3nm42FD/oDYIZ2PQa4TNWWuWecxln6jlIQzpZTDMUeO1NicJP6lLn2TtRw==}
+  /prettier-plugin-organize-imports/3.0.1_gd3y7r3s3evy6b2vthd7dmacga:
+    resolution: {integrity: sha512-pdMWKtoHRQ+9y1WB3mA1wzMkjzJzB4ycfOPlfZpmzq+YFZQIpkszJJQQHQ8EYVyULlLohlOnAxSmXfaKWpRAAw==}
     peerDependencies:
+      '@volar/vue-typescript': '>=0.39.0'
       prettier: '>=2.0'
       typescript: '>=2.9'
+    peerDependenciesMeta:
+      '@volar/vue-typescript':
+        optional: true
     dependencies:
       prettier: registry.npmmirror.com/prettier/2.7.1
       typescript: registry.npmmirror.com/typescript/4.7.4

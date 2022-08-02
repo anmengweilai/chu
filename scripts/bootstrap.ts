@@ -48,8 +48,10 @@ import { setExcludeFolder } from './.internal/utils';
             files: ['dist'],
             scripts: {
               build: SCRIPTS.BUILD,
+              'build:tsc': SCRIPTS['BUILD:TSC'],
               'build:deps': SCRIPTS.BUNDLE_DEPS,
               dev: SCRIPTS.DEV,
+              'dev:tsc': SCRIPTS['DEV:TSC'],
             },
             repository: {
               type: 'git',

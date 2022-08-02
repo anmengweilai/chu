@@ -1,5 +1,5 @@
-import chalk from 'chalk';
 import { join } from 'path';
+import chalk from '../../compiled/chalk';
 import fsExtra from '../../compiled/fs-extra';
 import { importLazy } from './importLazy';
 
@@ -30,8 +30,6 @@ if (enableFSLogger) {
     ready: 31,
     event: 32,
     wait: 55,
-    // 虽然这里设置了 debug 为 30，但日志中还是 20，符合预期
-    // 这里不加会不生成到 umi.log，transport 的 level 配置没有生效，原因不明
     debug: 30,
   };
   logger = pino(

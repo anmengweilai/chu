@@ -1,8 +1,8 @@
 {
-  "name": "chu",
+  "name": "@chu/preset-chu",
   "version": "1.0.0",
-  "description": "chu",
-  "homepage": "https://github.com/anmengweilai/chu/tree/master/packages/chu#readme",
+  "description": "@chu/preset-chu",
+  "homepage": "https://github.com/anmengweilai/chu/tree/master/packages/preset-chu#readme",
   "bugs": "https://github.com/anmengweilai/chu/issues",
   "repository": {
     "type": "git",
@@ -11,26 +11,15 @@
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": {
-    "chu": "bin/chu.js"
-  },
   "files": [
-    "dist",
-    "bin"
+    "dist"
   ],
   "scripts": {
     "build": "chu-scripts father build",
     "build:deps": "chu-scripts bundleDeps",
     "build:tsc": "pnpm tsc",
-    "build:tsup": "pnpm tsup",
     "dev": "chu-scripts father dev",
     "dev:tsc": "pnpm tsc --watch"
-  },
-  "dependencies": {
-    "@chu/utils": "workspace:^1.0.0"
-  },
-  "devDependencies": {
-    "@babel/runtime": "^7.18.9"
   },
   "publishConfig": {
     "access": "public"

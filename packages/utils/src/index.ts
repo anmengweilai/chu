@@ -3,6 +3,7 @@ export default () => {
 };
 
 import chalk from '../compiled/chalk';
+import commander from '../compiled/commander';
 import crossSpawn from '../compiled/cross-spawn';
 import debug from '../compiled/debug';
 import deepmerge from '../compiled/deepmerge';
@@ -14,7 +15,8 @@ import rimraf from '../compiled/rimraf';
 import semver from '../compiled/semver';
 import stripAnsi from '../compiled/strip-ansi';
 import yParser from '../compiled/yargs-parser';
-import * as logger from './funs/logger';
+import { isLocalDev } from './methods/isLocalDev';
+import * as logger from './methods/logger';
 
 export {
   chalk,
@@ -29,5 +31,7 @@ export {
   stripAnsi,
   glob,
   yParser,
+  commander,
   logger,
+  isLocalDev,
 };
