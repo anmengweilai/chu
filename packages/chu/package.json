@@ -15,9 +15,12 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm tsc",
+    "build": "tsup --dts",
     "build:deps": "chu-scripts bundleDeps",
     "dev": "pnpm build --watch"
+  },
+  "dependencies": {
+    "@chu/utils": "workspace:^1.0.0"
   },
   "publishConfig": {
     "access": "public"

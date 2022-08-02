@@ -1,5 +1,7 @@
 // import * as logger from ;
 
+import spawn from '@chu/utils/compiled/cross-spawn';
+import type { SpawnSyncOptions } from 'child_process';
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { PATHS } from './constants';
