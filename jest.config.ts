@@ -1,7 +1,8 @@
-// import { Config, createConfig } from 'umi/test';
+// @ts-ignore
+import { Config, createConfig } from '@chu/test';
 
 export default {
-  // ...createConfig(),
+  ...createConfig(),
   testMatch: ['<rootDir>/packages/*/src/**/*.test.ts'],
   modulePathIgnorePatterns: [
     '<rootDir>/packages/.+/compiled',
@@ -15,5 +16,4 @@ export default {
     '!**/fixtures/**/*.*',
     // '!packages/create-umi/templates/**/*.*',
   ],
-};
-// as Config.InitialOptions;
+} as Config.InitialOptions;
