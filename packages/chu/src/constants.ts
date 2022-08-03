@@ -7,3 +7,4 @@ export const DEFAULT_CONFIG_FILES = [
   'config/config.js',
 ];
 export const FRAMEWORK_NAME = 'chu';
+export const DEFAULT_CONFIG_FILE = '.churc';

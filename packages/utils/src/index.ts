@@ -18,6 +18,7 @@ import yParser from '../compiled/yargs-parser';
 import { isLocalDev } from './methods/isLocalDev';
 import * as logger from './methods/logger';
 
+export { getObjVal, setObjVal, unsetObjVal } from './methods/setObject';
 export {
   chalk,
   crossSpawn,

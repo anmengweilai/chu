@@ -23,13 +23,16 @@
     "build": "chu-scripts father build",
     "build:deps": "chu-scripts bundleDeps",
     "build:tsc": "pnpm tsc",
-    "build:tsup": "pnpm tsup",
     "dev": "chu-scripts father dev",
     "dev:tsc": "pnpm tsc --watch"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "@chu/utils": "workspace:*"
+    "@chu/utils": "workspace:*",
+    "inquirer": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.2.1"
   },
   "publishConfig": {
     "access": "public"

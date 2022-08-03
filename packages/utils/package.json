@@ -74,7 +74,8 @@
       "semver",
       "strip-ansi",
       "yargs-parser",
-      "commander"
+      "commander",
+      "inquirer"
     ],
     "externals": {
       "chalk": "$$LOCAL",
@@ -87,7 +88,8 @@
       "semver": "$$LOCAL",
       "strip-ansi": "$$LOCAL",
       "yargs-parser": "$$LOCAL",
-      "commander": "$$LOCAL"
+      "commander": "$$LOCAL",
+      "inquirer": "$$LOCAL"
     }
   }
 }

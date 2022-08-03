@@ -18,7 +18,7 @@ const enableFSLogger =
   process.env.FS_LOGGER !== 'none' && !process.versions.webcontainer;
 
 const loggerDir = join(process.cwd(), 'node_modules/.cache/logger');
-const loggerPath = join(loggerDir, 'umi.log');
+const loggerPath = join(loggerDir, 'chu.log');
 
 let logger: any;
 if (enableFSLogger) {
