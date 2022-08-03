@@ -95,7 +95,7 @@ import { setExcludeFolder } from './.internal/utils';
         'utf-8',
       );
 
-      //fatherrc.base.ts
+      //tsconfig.json
       await fs.writeFile(
         path.join(pkgDir, 'tsconfig.json'),
         JSON.stringify({
@@ -109,9 +109,9 @@ import { setExcludeFolder } from './.internal/utils';
         'utf-8',
       );
 
-      //tsconfig.json
+      //fatherrc.ts
       await fs.writeFile(
-        path.join(pkgDir, '.fatherrc.base.ts'),
+        path.join(pkgDir, '.fatherrc.ts'),
         `import { defineConfig } from 'father';
 
 export default defineConfig({

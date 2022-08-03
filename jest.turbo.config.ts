@@ -1,3 +1,5 @@
+import { Config, createConfig } from '@chu/test';
+
 const cwd = process.cwd();
 
 export default {
