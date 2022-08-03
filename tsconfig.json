@@ -7,7 +7,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["*"],
-      "@@/*": [".umi/*"],
+      "@@/*": [".chu/*"],
+      "chu": ["./packages/chu"],
+      "@chu/utils": ["./packages/utils"],
       "test-utils": ["test/lib/testUtils"]
     }
   }

@@ -31,6 +31,9 @@
       "prettier --cache --parser=typescript --write"
     ]
   },
+  "dependencies": {
+    "father": "4.0.0-rc.7"
+  },
   "devDependencies": {
     "@chu/utils": "workspace:*",
     "@pnpm/lockfile-file": "^5.3.1",
@@ -43,7 +46,6 @@
     "@types/resolve": "^1.20.2",
     "@vercel/ncc": "0.33.3",
     "dts-packer": "^0.0.3",
-    "father": "^4.0.0-rc.7",
     "fs-extra": "^10.1.0",
     "husky": "^8.0.1",
     "jest": "^28.1.2",

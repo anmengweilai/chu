@@ -10,12 +10,13 @@
   },
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "bin": {
     "chu": "bin/chu.js"
   },
   "files": [
     "dist",
+    "index.d.ts",
     "bin"
   ],
   "scripts": {
@@ -27,10 +28,8 @@
     "dev:tsc": "pnpm tsc --watch"
   },
   "dependencies": {
-    "@chu/utils": "workspace:^1.0.0"
-  },
-  "devDependencies": {
-    "@babel/runtime": "^7.18.9"
+    "@babel/runtime": "^7.18.9",
+    "@chu/utils": "workspace:*"
   },
   "publishConfig": {
     "access": "public"
