@@ -14,9 +14,9 @@ const configPath = (file: string) => {
   }
 };
 
-export const getRcPath = (file: string = '.churc') => {
+export const getRcPath = (file: string = DEFAULT_CONFIG_FILE) => {
   return (
-    DEFAULT_CONFIG_FILE || configPath(file) || path.join(os.homedir(), file)
+    path.join(os.homedir(), file) || configPath(file) || DEFAULT_CONFIG_FILE
   );
 };
 
