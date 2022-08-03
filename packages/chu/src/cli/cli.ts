@@ -1,5 +1,3 @@
-import { logger } from '@chu/utils';
-import { checkDefConfigRcFile } from '../utils/rcFile';
 import { settingCommandsOptions } from './commander';
 import {
   checkLocal,
@@ -22,6 +20,6 @@ export async function run(_opts?: IOpts) {
     settingCommandsOptions();
   } catch (e) {
     logger.fatal(e);
-    process.exit(1);
+    exit(1);
   }
 }

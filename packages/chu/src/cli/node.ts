@@ -7,7 +7,7 @@ export function checkVersion() {
     logger.error(
       `Your node version ${version} is not supported, please upgrade to ${MIN_NODE_VERSION} or above except 15 or 17.`,
     );
-    process.exitCode = 1;
+    process.exit(1);
   }
 }
 

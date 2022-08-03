@@ -1,3 +1,5 @@
+import os from 'os';
+import path from 'path';
 import index from './index';
 import { getRcPath } from './utils/rcFile';
 
@@ -6,5 +8,6 @@ test('normal', () => {
 });
 
 test('rcFile.ts', () => {
-  expect(getRcPath()).toEqual('.churc');
+  console.log(getRcPath());
+  expect(getRcPath()).toEqual(path.join(os.homedir(), '.churc'));
 });
