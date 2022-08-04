@@ -19,7 +19,7 @@ export async function run(_opts?: IOpts) {
   checkDefConfigRcFile();
   setNoDeprecation();
   try {
-    settingCommandsOptions();
+    await settingCommandsOptions();
   } catch (e) {
     logger.fatal(e);
     process.exit(1);

@@ -1,10 +1,24 @@
-import { chalk, commander } from '@chu/utils';
-import { settingConfigure } from './config';
+import { chalk, commander, leven } from '@chu/utils';
+import { configure } from './config';
+import { settingNpmRegistry } from './setting';
 
 const { Command } = commander;
 const program = new Command();
 
-export const settingCommandsOptions = () => {
+export const settingCommandsOptions = async () => {
+  program
+    .version(`@chu/cli ${require('../../package.json').version}`)
+    .usage('<command> [options]');
+
+  // @ts-ignore
+  program
+    .command('setting')
+    .description('setup development environment ')
+    .option('-c,-choose <registry-name>', 'choose need npm registry url')
+    .action((value) => {
+      settingNpmRegistry(value);
+    });
+
   // @ts-ignore
   program
     .command('config [value]')
@@ -15,7 +29,7 @@ export const settingCommandsOptions = () => {
     .option('-e, --edit', 'open config with default editor')
     .option('--json', 'outputs JSON result only')
     .action(async (value: string, options: any) => {
-      await settingConfigure(value, options);
+      await configure(value, options);
     });
 
   // output help information on unknown commands
@@ -23,8 +37,8 @@ export const settingCommandsOptions = () => {
     program.outputHelp();
     console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`));
     console.log();
-    // suggestCommands(cmd);
-    process.exitCode = 1;
+    suggestCommands(cmd);
+    process.exit(1);
   });
 
   // add some useful info on help
@@ -38,10 +52,26 @@ export const settingCommandsOptions = () => {
     console.log();
   });
 
-  program
-    .version(`@chu/cli ${require('../../package.json').version}`)
-    .usage('<command> [options]');
-
   program.commands.forEach((c) => c.on('--help', () => console.log()));
   program.parse(process.argv);
 };
+
+function suggestCommands(unknownCommand: string) {
+  const availableCommands = program.commands.map((cmd) => {
+    return cmd.name();
+  });
+
+  let suggestion: string | undefined;
+
+  availableCommands.forEach((cmd) => {
+    const isBestMatch =
+      leven(cmd, unknownCommand) < leven(suggestion || '', unknownCommand);
+    if (leven(cmd, unknownCommand) < 3 && isBestMatch) {
+      suggestion = cmd;
+    }
+  });
+
+  if (suggestion) {
+    console.log(`  ` + chalk.red(`Did you mean ${chalk.yellow(suggestion)}?`));
+  }
+}

@@ -20,6 +20,7 @@
     "postinstall": "chu-scripts postinstall",
     "lint": "turbo run lint",
     "prepare": "husky install",
+    "reset": "chu-scripts resetNodeModules",
     "test": "jest --passWithNoTests",
     "turbo:clean": "rimraf .turbo"
   },
@@ -47,6 +48,7 @@
     "@types/resolve": "^1.20.2",
     "@vercel/ncc": "0.33.3",
     "dts-packer": "^0.0.3",
+    "fast-glob": "^3.2.11",
     "fs-extra": "^10.1.0",
     "husky": "^8.0.1",
     "jest": "^28.1.2",

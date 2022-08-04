@@ -1,4 +1,5 @@
 import { join } from 'path';
+import readline from 'readline';
 import chalk from '../../compiled/chalk';
 import fsExtra from '../../compiled/fs-extra';
 import { importLazy } from './importLazy';
@@ -97,6 +98,17 @@ export function debug(...message: any[]) {
   logger.debug(message[0]);
 }
 
+export function clearConsole(title: string = '') {
+  if (process.stdout.isTTY) {
+    const blank = '\n'.repeat(process.stdout.rows);
+    console.log(blank);
+    readline.cursorTo(process.stdout, 0, 0);
+    readline.clearScreenDown(process.stdout);
+    if (title) {
+      console.log(title);
+    }
+  }
+}
 export function getLatestLogFilePath() {
   return enableFSLogger ? loggerPath : null;
 }

@@ -8,7 +8,7 @@ interface IOptions {
   json?: string;
 }
 
-export const settingConfigure = async (value: string, options: IOptions) => {
+export const configure = async (value: string, options: IOptions) => {
   const file = getRcPath();
   const config = await fsExtra.readJson(file);
   if (!options?.get && !options.delete && !options.set) {
