@@ -1,9 +1,9 @@
-//import { Config, createConfig } from 'umi/test';
+import { Config, createConfig } from '@chu/test';
 
 const cwd = process.cwd();
 
 export default {
-  // ...createConfig(),
+  ...createConfig(),
   rootDir: cwd,
   testMatch: ['<rootDir>/src/**/*.test.ts'],
   modulePathIgnorePatterns: [
@@ -13,5 +13,4 @@ export default {
   ],
   transformIgnorePatterns: ['/node_modules/', '/compiled/'],
   cacheDirectory: `${cwd}/.jest-cache`,
-};
-// as Config.InitialOptions;
+} as Config.InitialOptions;

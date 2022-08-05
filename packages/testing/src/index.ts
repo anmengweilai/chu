@@ -1,8 +1,9 @@
 import type { Config } from '@jest/types';
-
-export type { Config };
+import { Path, TransformerConfig } from '@jest/types/build/Config';
 
 export type JSTransformer = 'esbuild' | 'swc' | 'ts-jest';
+
+export type { Config };
 
 function getJSTransformer(
   jsTransformer: JSTransformer,

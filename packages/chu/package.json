@@ -1,5 +1,5 @@
 {
-  "name": "chu",
+  "name": "@chu/cli",
   "version": "1.0.0",
   "description": "chu",
   "homepage": "https://github.com/anmengweilai/chu/tree/master/packages/chu#readme",
@@ -23,13 +23,13 @@
     "build": "chu-scripts father build",
     "build:deps": "chu-scripts bundleDeps",
     "build:tsc": "pnpm tsc",
-    "build:tsup": "pnpm tsup",
     "dev": "chu-scripts father dev",
     "dev:tsc": "pnpm tsc --watch"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "@chu/utils": "workspace:*"
+    "@chu/utils": "workspace:*",
+    "inquirer": "^7.2.0"
   },
   "publishConfig": {
     "access": "public"

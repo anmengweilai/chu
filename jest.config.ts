@@ -1,4 +1,3 @@
-// @ts-ignore
 import { Config, createConfig } from '@chu/test';
 
 export default {

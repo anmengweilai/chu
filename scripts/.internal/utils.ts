@@ -1,5 +1,5 @@
 // import * as logger from ;
-
+import { logger } from '@chu/utils';
 import spawn from '@chu/utils/compiled/cross-spawn';
 import type { SpawnSyncOptions } from 'child_process';
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
@@ -36,8 +36,8 @@ export function eachPkg(
 
 export function assert(v: unknown, message: string) {
   if (!v) {
-    // logger.error(message);
-    console.log(message);
+    logger.error(message);
+    // console.log(message);
     process.exit(1);
   }
 }
@@ -73,7 +73,7 @@ export function spawnSync(cmd: string, opts: SpawnSyncOptions) {
     ...opts,
   });
   if (result.status !== 0) {
-    // logger.error(`Execute command error (${cmd})`);
+    logger.error(`Execute command error (${cmd})`);
     process.exit(1);
   }
   return result;

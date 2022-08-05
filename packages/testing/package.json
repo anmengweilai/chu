@@ -37,5 +37,10 @@
   },
   "authors": [
     "anmengweilai <chumengyouying@outlook.com> (https://github.com/anmengweilai)"
-  ]
+  ],
+  "compiledConfig": {
+    "deps": [
+      "identity-obj-proxy"
+    ]
+  }
 }
