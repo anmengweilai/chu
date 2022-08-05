@@ -1,6 +1,7 @@
-import { chalk, commander, leven } from '@chu/utils';
+import { chalk, commander, exit, leven } from '@chu/utils';
 import { configure } from './config';
 import { settingNpmRegistry } from './setting';
+import tagActions from './tag';
 
 const { Command } = commander;
 const program = new Command();
@@ -32,13 +33,21 @@ export const settingCommandsOptions = async () => {
       await configure(value, options);
     });
 
+  program
+    .command('tag [value]')
+    .description('work items to generate tags')
+    .option('-c, --create', 'create new tag')
+    .action(async (value: string, options: any) => {
+      await tagActions(value, options);
+    });
+
   // output help information on unknown commands
   program.on('command:*', ([cmd]: any[]) => {
     program.outputHelp();
     console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`));
     console.log();
     suggestCommands(cmd);
-    process.exit(1);
+    exit(1);
   });
 
   // add some useful info on help
