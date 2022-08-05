@@ -1,4 +1,4 @@
-import { fsExtra, isLocalDev } from '@chu/utils';
+import { exit, fsExtra, isLocalDev } from '@chu/utils';
 import os from 'os';
 import path from 'path';
 import { platform } from 'process';
@@ -31,7 +31,9 @@ const migrateWindowsConfigPath = (file: string) => {
         } else {
           fsExtra.moveSync(rcFile, properRcFile);
         }
-      } catch (e) {}
+      } catch (e) {
+        exit(1);
+      }
     }
   }
 };

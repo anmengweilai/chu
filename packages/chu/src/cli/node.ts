@@ -1,4 +1,4 @@
-import { isLocalDev, logger } from '@chu/utils';
+import { exit, isLocalDev, logger } from '@chu/utils';
 import { FRAMEWORK_NAME, MIN_NODE_VERSION } from '../constants';
 
 export function checkVersion() {
@@ -7,7 +7,7 @@ export function checkVersion() {
     logger.error(
       `Your node version ${version} is not supported, please upgrade to ${MIN_NODE_VERSION} or above except 15 or 17.`,
     );
-    process.exit(1);
+    exit(1);
   }
 }
 
