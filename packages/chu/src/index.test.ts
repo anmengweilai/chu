@@ -8,6 +8,5 @@ test('normal', () => {
 });
 
 test('rcFile.ts', () => {
-  console.log(getRcPath());
   expect(getRcPath()).toEqual(path.join(os.homedir(), '.churc'));
 });

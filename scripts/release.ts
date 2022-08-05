@@ -14,10 +14,10 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
   const pkgs = getPkgs();
   logger.info(`pkgs: ${pkgs.join(', ')}`);
 
-  // // check git status  检测文件较上级提交是否有更改
-  // logger.event('check git status');
-  // const isGitClean = (await $`git status --porcelain`).stdout.trim().length;
-  // assert(!isGitClean, 'git status is not clean');
+  // check git status  检测文件较上级提交是否有更改
+  logger.event('check git status');
+  const isGitClean = (await $`git status --porcelain`).stdout.trim().length;
+  assert(!isGitClean, 'git status is not clean');
 
   // check npm registry  检测本地npm注册地址是否为 https://registry.npmjs.org/
   logger.event('check npm registry');
@@ -28,28 +28,28 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
   );
 
   // check package changed
-  // logger.event('check package changed');
-  // const changed = (await $`lerna changed --loglevel error`).stdout.trim();
-  // assert(changed, `no package is changed`);
+  logger.event('check package changed');
+  const changed = (await $`lerna changed --loglevel error`).stdout.trim();
+  assert(changed, `no package is changed`);
 
   // check npm ownership 检测要提交的包与 当前npm是否有对应的 作者信息
-  // logger.event('check npm ownership');
-  // const whoami = (await $`npm whoami`).stdout.trim();
-  // await Promise.all(
-  //   ['@chu/cli'].map(async (pkg) => {
-  //     const owners = (await $`npm owner ls ${pkg}`).stdout
-  //       .trim()
-  //       .split('\n')
-  //       .map((line) => {
-  //         return line.split(' ')[0];
-  //       });
-  //     assert(owners.includes(whoami), `${pkg} is not owned by ${whoami}`);
-  //   }),
-  // );
+  logger.event('check npm ownership');
+  const whoami = (await $`npm whoami`).stdout.trim();
+  await Promise.all(
+    ['@chu/cli'].map(async (pkg) => {
+      const owners = (await $`npm owner ls ${pkg}`).stdout
+        .trim()
+        .split('\n')
+        .map((line) => {
+          return line.split(' ')[0];
+        });
+      assert(owners.includes(whoami), `${pkg} is not owned by ${whoami}`);
+    }),
+  );
 
   // check package.json  检验项目文件完整性
-  // logger.event('check package.json info');
-  // await $`npm run check:packageFiles`;
+  logger.event('check package.json info');
+  await $`npm run check:packageFiles`;
 
   // clean
   logger.event('clean');
@@ -70,7 +70,7 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
   // assert(!isGitCleanAfterClientBuild, 'client code is updated');
 
   // generate changelog
-  // TODO
+  // TODO 创建  generate changelog
   logger.event('generate changelog');
 
   // bump version
@@ -103,14 +103,7 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
     setDepsVersion({
       pkg,
       version,
-      deps: [
-        'umi',
-        '@umijs/max',
-        '@umijs/plugins',
-        '@umijs/bundler-vite',
-        '@umijs/preset-vue',
-        '@umijs/mfsu',
-      ],
+      deps: ['@chu/cli'],
     });
     delete pkg.version;
     fs.writeFileSync(
@@ -142,7 +135,7 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
   // npm publish
   logger.event('pnpm publish');
   $.verbose = false;
-  const innerPkgs = pkgs.filter((pkg) => !['umi', 'max'].includes(pkg));
+  const innerPkgs = pkgs.filter((pkg) => !['@chu/cli'].includes(pkg));
 
   // check 2fa config
   let otpArg: string[] = [];
@@ -165,23 +158,23 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
       logger.info(`+ ${pkg}`);
     }),
   );
-  await $`cd packages/umi && npm publish --tag ${tag} ${otpArg}`;
-  logger.info(`+ umi`);
-  await $`cd packages/max && npm publish --tag ${tag} ${otpArg}`;
-  logger.info(`+ @umijs/max`);
+  await $`cd packages/chu && npm publish --tag ${tag} ${otpArg}`;
+  logger.info(`+ @chu/cli`);
+  // TODO 添加还需要发布的包
+
   $.verbose = true;
 
-  // sync tnpm
-  logger.event('sync tnpm');
-  $.verbose = false;
-  await Promise.all(
-    pkgs.map(async (pkg) => {
-      const { name } = require(path.join(PATHS.PACKAGES, pkg, 'package.json'));
-      logger.info(`sync ${name}`);
-      await $`tnpm sync ${name}`;
-    }),
-  );
-  $.verbose = true;
+  // sync tnpm  不需要通知同步
+  // logger.event('sync tnpm');
+  // $.verbose = false;
+  // await Promise.all(
+  //   pkgs.map(async (pkg) => {
+  //     const { name } = require(path.join(PATHS.PACKAGES, pkg, 'package.json'));
+  //     logger.info(`sync ${name}`);
+  //     await $`tnpm sync ${name}`;
+  //   }),
+  // );
+  // $.verbose = true;
 })();
 
 function setDepsVersion(opts: {
