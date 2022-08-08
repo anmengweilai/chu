@@ -8,3 +8,7 @@ export const DEFAULT_CONFIG_FILES = [
 ];
 export const FRAMEWORK_NAME = 'chu';
 export const DEFAULT_CONFIG_FILE = '.churc';
+export const DEFAULT_CHU_RC_JSON = {
+  otherNpmSource: {},
+  baseProjectsDirPaths: [],
+};

@@ -1,4 +1,5 @@
 import { loadOptions } from '../utils/options';
+import { PromptModuleType } from './index';
 const { otherNpmSource } = loadOptions();
 
 export default {
@@ -30,4 +31,4 @@ export default {
       value: '',
     },
   ],
-} as PromptModule;
+} as PromptModuleType;

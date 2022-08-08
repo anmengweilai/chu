@@ -1,5 +1,6 @@
 import { chalk, commander, leven } from '@chu/utils';
 import { configure } from './config';
+import goToProject from './goToProject';
 import { settingNpmRegistry } from './setting';
 
 const { Command } = commander;
@@ -30,6 +31,15 @@ export const settingCommandsOptions = async () => {
     .option('--json', 'outputs JSON result only')
     .action(async (value: string, options: any) => {
       await configure(value, options);
+    });
+
+  // @ts-ignore
+  program
+    .command('go [value]')
+    .description('go to need project')
+    .option('-c , --choose', 'choose your need project name')
+    .action(async (value: string, options: any) => {
+      await goToProject(value, options);
     });
 
   // output help information on unknown commands

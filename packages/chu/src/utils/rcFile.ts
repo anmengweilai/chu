@@ -2,7 +2,7 @@ import { exit, fsExtra, isLocalDev } from '@chu/utils';
 import os from 'os';
 import path from 'path';
 import { platform } from 'process';
-import { DEFAULT_CONFIG_FILE } from '../constants';
+import { DEFAULT_CHU_RC_JSON, DEFAULT_CONFIG_FILE } from '../constants';
 
 const xdgConfigPath = (file: string) => {
   const xdgConfigHome = process.env.XDG_CONFIG_HOME;
@@ -45,10 +45,10 @@ export const getRcPath = (file: string = DEFAULT_CONFIG_FILE) => {
     : xdgConfigPath(file) || path.join(os.homedir(), file);
 };
 
-export const checkDefConfigRcFile = () => {
+export const checkDefConfigRcFile = (reset = false) => {
   const rcPath = getRcPath();
-  if (fsExtra.existsSync(rcPath)) {
+  if (fsExtra.existsSync(rcPath) && !reset) {
     return;
   }
-  fsExtra.writeFile(rcPath, JSON.stringify({}), 'utf-8');
+  fsExtra.writeFile(rcPath, JSON.stringify(DEFAULT_CHU_RC_JSON), 'utf-8');
 };
