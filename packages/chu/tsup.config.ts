@@ -1,7 +1,6 @@
 import { defineConfig } from 'tsup';
 import baseTSUPConfig from '../../tsup.config.base';
 
-console.log('------');
 export default defineConfig({
   ...baseTSUPConfig,
   splitting: false,

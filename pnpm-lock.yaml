@@ -85,10 +85,12 @@ importers:
       '@babel/runtime': ^7.18.9
       '@chu/utils': workspace:*
       '@types/inquirer': ^9.0.0
+      fuse.js: ^6.6.2
       inquirer: ^7.2.0
     dependencies:
       '@babel/runtime': 7.18.9
       '@chu/utils': link:../utils
+      fuse.js: 6.6.2
       inquirer: 7.3.3
     devDependencies:
       '@types/inquirer': 9.0.0
@@ -6329,6 +6331,11 @@ packages:
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
+
+  /fuse.js/6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
+    dev: false
 
   /gauge/4.0.4:
     resolution: {integrity: sha512-f9m+BEN5jkg6a0fZjleidjN51VE1X+mPFQ2DJ0uv1V39oCLCbsGe6yjbBnp7eK7z/+GAon99a3nHuqbuuthyPg==}

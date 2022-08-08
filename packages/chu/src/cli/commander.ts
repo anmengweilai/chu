@@ -35,9 +35,10 @@ export const settingCommandsOptions = async () => {
 
   // @ts-ignore
   program
-    .command('go [value]')
+    .command('go')
     .description('go to need project')
-    .option('-c , --choose', 'choose your need project name')
+    .option('-f , --filter <value>', 'filter project')
+    .option('-c , --choose <value>', 'filter project')
     .action(async (value: string, options: any) => {
       await goToProject(value, options);
     });
