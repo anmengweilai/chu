@@ -38,8 +38,8 @@ export const settingCommandsOptions = async () => {
     .command('go')
     .description('go to need project')
     .option('-f , --filter <value>', 'filter project')
-    .option('-c , --choose <value>', 'filter project')
-    .action(async (value: string, options: any) => {
+    .option('-c , --choose', 'choose project')
+    .action(async (value: any, options: any) => {
       await goToProject(value, options);
     });
 
