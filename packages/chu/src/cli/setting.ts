@@ -22,13 +22,12 @@ export async function settingNpmRegistry(options: IOptions) {
   let npmUrl;
   if (chooseRegistryName) {
     try {
-      npmUrl =
-        // @ts-ignore
-        npmRegistries.choices.find(
-          (i) =>
-            i.name.toLocaleLowerCase() ===
-            chooseRegistryName.toLocaleLowerCase(),
-        ).value;
+      // @ts-ignore
+      npmUrl = npmRegistries.choices.find(
+        (i) =>
+          (i.name || '').toLocaleLowerCase() ===
+          chooseRegistryName.toLocaleLowerCase(),
+      ).value;
     } catch (e) {
       npmUrl = -1;
       return Promise.reject(
