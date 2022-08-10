@@ -35,7 +35,7 @@ export const settingCommandsOptions = async () => {
 
   // @ts-ignore
   program
-    .command('go')
+    .command('project')
     .description('go to need project')
     .option('-f , --filter <value>', 'filter project')
     .option('-c , --choose', 'choose project')

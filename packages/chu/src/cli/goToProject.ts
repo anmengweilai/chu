@@ -13,7 +13,14 @@ export default async function (
 ) {
   // const homeDir = os.homedir();
 
-  const { baseProjectsDirPaths } = await loadOptions();
+  const { baseProjectsDirPaths } = (await loadOptions()) as {
+    baseProjectsDirPaths: string[];
+  };
+
+  if (baseProjectsDirPaths.length === 0) {
+    logger.error('You should setting baseProjectsDirPaths');
+    return exit(0);
+  }
 
   let allBaseProjectDirPaths: string[] = [];
   for (let basePath of baseProjectsDirPaths) {
