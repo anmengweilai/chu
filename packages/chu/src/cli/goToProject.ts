@@ -13,7 +13,7 @@ export default async function (
 ) {
   // const homeDir = os.homedir();
 
-  const { baseProjectsDirPaths } = (await loadOptions()) as {
+  let { baseProjectsDirPaths } = (await loadOptions()) as {
     baseProjectsDirPaths: string[];
   };
 
@@ -22,12 +22,15 @@ export default async function (
     return exit(0);
   }
 
+  baseProjectsDirPaths = baseProjectsDirPaths.map((item) => {
+    if (item[0] !== '/') {
+      item = `/${item}`;
+    }
+    return item;
+  });
+
   let allBaseProjectDirPaths: string[] = [];
   for (let basePath of baseProjectsDirPaths) {
-    if (basePath[0] !== '/') {
-      basePath = `/${basePath}`;
-    }
-
     const projectDirPaths = await fastGlob(['**/.git/config'], {
       cwd: basePath,
       dot: true,
@@ -59,9 +62,13 @@ async function chooseProjectOnList(
 ) {
   let choices: ChoiceOptions[] = [];
   for (let basePath of baseProjectsDirPaths) {
+    if (basePath[basePath.length - 1] !== '/') {
+      basePath = `${basePath}/`;
+    }
     for (const baseProPath of allBaseProjectDirPaths) {
       const jsonPath = join(baseProPath, 'package.json');
       if (!fsExtra.existsSync(jsonPath)) continue;
+      if (!baseProPath.includes(basePath)) continue;
       const json = fsExtra.readJSONSync(jsonPath);
       let name = '';
       if (json.name) {
@@ -83,6 +90,11 @@ async function chooseProjectOnList(
   if (value?.filter) {
     const { filter: filterValue } = value;
     choices = dataFilter(filterValue, choices, ['name'], {});
+  }
+
+  if (choices.length === 0) {
+    logger.error('No corresponding item found');
+    return exit(0);
   }
 
   const { chooseProject } = (await inquirer.prompt([
@@ -151,5 +163,6 @@ async function generatePrompt(
     await generatePrompt(paths, baseProjectsDirPathStr);
   } else {
     logger.event(`cd ${paths[0]}`);
+    return exit();
   }
 }

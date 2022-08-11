@@ -1,6 +1,7 @@
 import { chalk, commander, leven } from '@chu/utils';
 import { configure } from './config';
 import goToProject from './goToProject';
+import { pkgScripts } from './pkgScripts';
 import { settingNpmRegistry } from './setting';
 
 const { Command } = commander;
@@ -41,6 +42,15 @@ export const settingCommandsOptions = async () => {
     .option('-c , --choose', 'choose project')
     .action(async (value: any, options: any) => {
       await goToProject(value, options);
+    });
+
+  // @ts-ignore
+  program
+    .command('scripts')
+    .description('show or run scripts in package.json')
+    .option('-s , --show', 'show project scripts')
+    .action(async (value: any, options: any) => {
+      await pkgScripts(value, options);
     });
 
   // output help information on unknown commands
