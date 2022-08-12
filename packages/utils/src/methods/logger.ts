@@ -5,14 +5,14 @@ import fsExtra from '../../compiled/fs-extra';
 import { importLazy } from './importLazy';
 
 export const prefixes = {
-  wait: chalk.cyan('wait') + ' -',
-  error: chalk.red('error') + ' -',
-  fatal: chalk.red('fatal') + ' -',
-  warn: chalk.yellow('warn') + '  -',
-  ready: chalk.green('ready') + ' -',
-  info: chalk.cyan('info') + '  -',
-  event: chalk.magenta('event') + ' -',
-  debug: chalk.gray('debug') + ' -',
+  wait: chalk.cyan('wait') + '   -',
+  error: chalk.red('error') + '  -',
+  fatal: chalk.red('fatal') + '  -',
+  warn: chalk.yellow('warn') + '   -',
+  ready: chalk.green('ready') + '  -',
+  info: chalk.cyan('info') + '   -',
+  event: chalk.magenta('event') + '  -',
+  debug: chalk.gray('debug') + '  -',
 };
 
 const enableFSLogger =

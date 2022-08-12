@@ -203,6 +203,11 @@ const useFontClassTypeIcon = async (config: IconFontConfig) => {
 };
 
 const useSymbolTypeIcon = async (config: IconFontConfig) => {
+  if (config.clear) {
+    logger.event('Clear files ....');
+    fsExtra.removeSync(config.path);
+  }
+
   const iconfontData = await getResFile(baseIconfontUrl + config.name + '.js');
   const reg: RegExp = /id="[\s\S]*?"/g;
   const iconIdList = iconfontData
