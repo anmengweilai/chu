@@ -29,7 +29,8 @@
           "default": {},
           "type": "object"
         }
-      }
+      },
+      "required": ["name"]
     }
   }
 }

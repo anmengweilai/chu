@@ -12,7 +12,7 @@ import { join } from 'path';
 import { DEFAULT_CHU_ICON_FONT_FILE_NAME } from '../constants';
 import { checkConfigFile } from '../utils/checkConfigFile';
 
-type iconfontType = 'Unicode' | 'Font Class' | 'Symbol';
+type iconfontType = 'Unicode' | 'FontClass' | 'Symbol';
 
 type IconFontOptions = {
   name?: string;
@@ -77,12 +77,18 @@ export default async function (_value: any, _options: IconFontOptions) {
 
   isLocalDev() && console.log({ config });
 
-  if (config.type === 'Symbol') {
+  if (config.type.toLocaleLowerCase() === 'Symbol'.toLocaleLowerCase()) {
     await useSymbolTypeIcon(config);
-  } else if (config.type === 'Unicode') {
+  } else if (
+    config.type.toLocaleLowerCase() === 'Unicode'.toLocaleLowerCase()
+  ) {
     await useUnicodeTypeIcon(config);
-  } else if (config.type === 'Font Class') {
+  } else if (
+    config.type.toLocaleLowerCase() === 'FontClass'.toLocaleLowerCase()
+  ) {
     await useFontClassTypeIcon(config);
+  } else {
+    logger.error('Use iconfont type error ！！！！');
   }
 
   logger.info(`${chalk.green('Success')}: write iconfont files ！`);
@@ -112,7 +118,7 @@ const useUnicodeTypeIcon = async (config: IconFontConfig) => {
     font-size:16px;font-style:normal;
     -webkit-font-smoothing: antialiased;
     -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;}`;
+    -moz-osx-font-smoothing: grayscale;\n}`;
   const baseSavePath = config.path;
   const saveCssPath = join(baseSavePath, 'iconfont.css');
 
@@ -212,7 +218,7 @@ const useSymbolTypeIcon = async (config: IconFontConfig) => {
     encoding: 'utf-8',
   });
 
-  logger.info('Write iconfont.md ...');
+  logger.wait('Write iconfont.md ...');
   fsExtra.ensureFileSync(saveMdPath);
   fsExtra.writeFileSync(saveMdPath, iconIdList.join(''), {
     encoding: 'utf-8',

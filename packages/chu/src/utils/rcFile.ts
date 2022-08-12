@@ -1,6 +1,6 @@
 import { exit, fsExtra, isLocalDev } from '@chu/utils';
 import os from 'os';
-import path from 'path';
+import path, { join } from 'path';
 import { platform } from 'process';
 import { DEFAULT_CHU_RC_JSON, DEFAULT_CONFIG_FILE } from '../constants';
 
@@ -39,9 +39,10 @@ const migrateWindowsConfigPath = (file: string) => {
 };
 
 export const getRcPath = (file: string = DEFAULT_CONFIG_FILE) => {
+  console.log('getRcPath', isLocalDev());
   migrateWindowsConfigPath(file);
   return isLocalDev()
-    ? file
+    ? join(isLocalDev() as string, file)
     : xdgConfigPath(file) || path.join(os.homedir(), file);
 };
 
