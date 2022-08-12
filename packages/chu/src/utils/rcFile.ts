@@ -39,7 +39,6 @@ const migrateWindowsConfigPath = (file: string) => {
 };
 
 export const getRcPath = (file: string = DEFAULT_CONFIG_FILE) => {
-  console.log('getRcPath', isLocalDev());
   migrateWindowsConfigPath(file);
   return isLocalDev()
     ? join(isLocalDev() as string, file)
