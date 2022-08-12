@@ -1,6 +1,7 @@
 import { chalk, commander, leven } from '@chu/utils';
 import { configure } from './config';
 import goToProject from './goToProject';
+import createIconFont from './iconFont';
 import { pkgScripts } from './pkgScripts';
 import { settingNpmRegistry } from './setting';
 
@@ -30,8 +31,23 @@ export const settingCommandsOptions = async () => {
     .option('-d, --delete <path>', 'delete option from config')
     .option('-e, --edit', 'open config with default editor')
     .option('--json', 'outputs JSON result only')
-    .action(async (value: string, options: any) => {
+    .action(async (value: any, options: any) => {
       await configure(value, options);
+    });
+
+  // @ts-ignore
+  program
+    .command('iconfont [value]')
+    .description('create iconfont from https://www.iconfont.cn/')
+    .option('-p, --path <path>', 'save iconfont file path')
+    .option(
+      '-t, --type <value>',
+      'use iconfont file type: Unicode | Font Class | Symbol (recommend）',
+    )
+    .option('-n, --name <value>', 'iconfont name')
+    .option('-up, --update', 'update resource files')
+    .action(async (value: any, options: any) => {
+      await createIconFont(value, options);
     });
 
   // @ts-ignore

@@ -37,6 +37,7 @@
     "@types/rimraf": "3.0.2",
     "@types/semver": "7.3.9",
     "@types/yargs-parser": "^21.0.0",
+    "axios": "^0.27.2",
     "chalk": "5.0.1",
     "color": "^4.2.3",
     "commander": "^9.4.0",
@@ -63,6 +64,7 @@
   ],
   "compiledConfig": {
     "deps": [
+      "axios",
       "chalk",
       "color",
       "cross-spawn",
@@ -83,6 +85,7 @@
       "@hapi/joi"
     ],
     "externals": {
+      "axios": "$$LOCAL",
       "chalk": "$$LOCAL",
       "cross-spawn": "$$LOCAL",
       "debug": "$$LOCAL",

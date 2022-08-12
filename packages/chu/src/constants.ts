@@ -12,3 +12,7 @@ export const DEFAULT_CHU_RC_JSON = {
   otherNpmSource: {},
   baseProjectsDirPaths: [],
 };
+
+export const DEFAULT_CHU_ICON_FONT_FILE_NAME = 'chu.iconfont.config';
+
+export const CONFIG_FILE_TYPES = ['ts', 'js', 'json'];

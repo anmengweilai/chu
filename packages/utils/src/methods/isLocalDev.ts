@@ -1,6 +1,6 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
-const root = join(__dirname, '../../../');
+const root = join(__dirname, '../../../../');
 const rootPkg = join(root, './package.json');
 
 /**

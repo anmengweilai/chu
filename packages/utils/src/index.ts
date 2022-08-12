@@ -2,6 +2,7 @@ export default () => {
   return '@chu/utils';
 };
 
+import axios from 'axios';
 import chalk from '../compiled/chalk';
 import commander from '../compiled/commander';
 import crossSpawn from '../compiled/cross-spawn';
@@ -25,6 +26,7 @@ export { exit, exitProcess } from './methods/exit';
 export { getObjVal, setObjVal, unsetObjVal } from './methods/setObject';
 export { createSchema, validate, validateSync } from './methods/validate';
 export {
+  axios,
   chalk,
   crossSpawn,
   debug,

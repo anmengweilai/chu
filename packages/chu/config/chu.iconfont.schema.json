@@ -1,0 +1,35 @@
+{
+  "$ref": "#/definitions/Schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Schema": {
+      "additionalProperties": false,
+      "properties": {
+        "$schema": {
+          "default": "https://github.com/anmengweilai/chu/tree/main/packages/chu/config/chu.iconfont.schema.json",
+          "type": "string"
+        },
+        "type": {
+          "default": "Symbol",
+          "type": "string"
+        },
+        "path": {
+          "default": "src/assets/static/iconfont",
+          "type": "string"
+        },
+        "name": {
+          "default": "iconfont",
+          "type": "string"
+        },
+        "unicode": {
+          "default": {},
+          "type": "object"
+        },
+        "fontClass": {
+          "default": {},
+          "type": "object"
+        }
+      }
+    }
+  }
+}

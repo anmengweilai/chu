@@ -1,4 +1,4 @@
-import { createSchema, exit, logger, validate } from '@chu/utils';
+import { createSchema, exit, isLocalDev, logger, validate } from '@chu/utils';
 import fs from 'fs';
 import { getRcPath } from './rcFile';
 
@@ -18,6 +18,7 @@ export const loadOptions = () => {
   }
   if (fs.existsSync(rcPath)) {
     try {
+      isLocalDev() && console.log({ rcPath });
       cachedOptions = JSON.parse(fs.readFileSync(rcPath, 'utf-8'));
     } catch (e: any) {
       logger.error(
