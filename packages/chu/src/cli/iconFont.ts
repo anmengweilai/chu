@@ -130,12 +130,10 @@ const useUnicodeTypeIcon = async (config: IconFontConfig) => {
       'gi',
     );
     const iconfontClass = iconfontData.match(reg);
-    console.log({ iconfontClass });
     if (iconfontClass) {
       baseIconfontClass = iconfontClass[0];
     }
   }
-  console.log({ baseIconfontClass });
 
   if (config.clear) {
     logger.event('Clear files ....');
