@@ -6,6 +6,7 @@ import {
   fsExtra,
   isLocalDev,
   logger,
+  mustache,
 } from '@chu/utils';
 import type { AxiosRequestConfig } from '@chu/utils/compiled/axios';
 import { join } from 'path';
@@ -23,7 +24,7 @@ type IconFontConfig = {
   name: string;
   type: iconfontType;
   path: string;
-  unicode: { cdn: boolean; suffixes: suffixType[] };
+  unicode: { cdn: boolean; suffixes: suffixType[]; iconfontClassName: string };
   fontClass: { cdn: boolean };
   clear: boolean;
 };
@@ -35,6 +36,7 @@ const defConfig: IconFontConfig = {
   path: 'src/assets/static/iconfont',
   name: 'IconFontConfig',
   unicode: {
+    iconfontClassName: 'iconfont',
     cdn: false,
     suffixes: ['eot', 'woff2', 'woff', 'ttf', 'svg'],
   },
@@ -113,25 +115,27 @@ const useUnicodeTypeIcon = async (config: IconFontConfig) => {
   const suffixes: suffixType[] = config.unicode.suffixes;
   const iconfontFiles = [];
 
-  let baseClass = `.iconfont{
-    font-family:"iconfont" !important;
-    font-size:16px;font-style:normal;
-    -webkit-font-smoothing: antialiased;
-    -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;\n}`;
   const baseSavePath = config.path;
   const saveCssPath = join(baseSavePath, 'iconfont.css');
 
+  let baseIconfontClass = '';
   if (fsExtra.existsSync(saveCssPath)) {
     const iconfontData = fsExtra.readFileSync(saveCssPath, {
       encoding: 'utf-8',
     });
-    const reg = /.iconfont{[\s\S]*?}/gi;
+
+    // const reg = eval(`/.${config.unicode.iconfontClassName}{[\s\S]*?}/g`);
+    const reg = new RegExp(
+      `.${config.unicode.iconfontClassName}{[\\s\\S]*?}`,
+      'gi',
+    );
     const iconfontClass = iconfontData.match(reg);
+    console.log({ iconfontClass });
     if (iconfontClass) {
-      baseClass = iconfontClass[0];
+      baseIconfontClass = iconfontClass[0];
     }
   }
+  console.log({ baseIconfontClass });
 
   if (config.clear) {
     logger.event('Clear files ....');
@@ -156,33 +160,25 @@ const useUnicodeTypeIcon = async (config: IconFontConfig) => {
     ? `${cdnIconfontUrl}${config.name}`
     : `${config.name}`;
 
-  let iconfontCss = `@font-face {\nfont-family: 'iconfont';\n src:`;
-  let index = 0;
-  for (const iconfontFile of iconfontFiles) {
-    const start = index === 0 ? '' : '\n    ';
-    const end = index === iconfontFiles.length - 1 ? ';' : ',';
-    if (iconfontFile === 'eot') {
-      iconfontCss = `${iconfontCss}${start}url('${iconfontUrl}.eot');\n src:url('${iconfontUrl}.eot?#iefix') format('embedded-opentype')${end}`;
-    }
-    if (iconfontFile === 'woff2') {
-      iconfontCss = `${iconfontCss}${start}url('${iconfontUrl}.woff2') format('woff2')${end}`;
-    }
-    if (iconfontFile === 'woff') {
-      iconfontCss = `${iconfontCss}${start}url('${iconfontUrl}.woff') format('woff')${end}`;
-    }
-    if (iconfontFile === 'ttf') {
-      iconfontCss = `${iconfontCss}${start}url('${iconfontUrl}.ttf') format('truetype')${end}`;
-    }
-    if (iconfontFile === 'svg') {
-      iconfontCss = `${iconfontCss}${start}url('${iconfontUrl}.svg#iconfont') format('svg')${end}`;
-    }
-    index++;
-  }
+  const tpl = fsExtra.readFileSync(
+    join(__dirname, '../templates/iconfont.tpl'),
+    { encoding: 'utf-8' },
+  );
 
-  iconfontCss = `${iconfontCss}\n}\n ${baseClass}`;
+  const iconfontCss = mustache.render(tpl, {
+    iconfontClassName: config.unicode.iconfontClassName,
+    basePath: iconfontUrl,
+    eotType: iconfontFiles.includes('eot'),
+    expectEotSrc: !iconfontFiles.includes('eot'),
+    woff2Type: iconfontFiles.includes('woff2'),
+    woffType: iconfontFiles.includes('woff'),
+    ttfType: iconfontFiles.includes('ttf'),
+    svgType: iconfontFiles.includes('svg'),
+    tempIconfontClassData: !baseIconfontClass,
+  });
 
   fsExtra.ensureFileSync(saveCssPath);
-  fsExtra.writeFileSync(saveCssPath, iconfontCss, {
+  fsExtra.writeFileSync(saveCssPath, iconfontCss + `\n ${baseIconfontClass}`, {
     encoding: 'utf-8',
   });
 };
