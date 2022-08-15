@@ -125,6 +125,7 @@ importers:
       '@types/glob': ^7.2.0
       '@types/hapi__joi': ^17.1.8
       '@types/lodash': 4.14.182
+      '@types/mustache': ^4.2.1
       '@types/prompts': ^2.0.14
       '@types/rimraf': 3.0.2
       '@types/semver': 7.3.9
@@ -142,6 +143,7 @@ importers:
       import-lazy: ^4.0.0
       leven: ^4.0.0
       lodash: ^4.17.21
+      mustache: ^4.2.0
       pino: ^8.3.1
       prompts: ^2.4.2
       rimraf: ^3.0.2
@@ -159,6 +161,7 @@ importers:
       '@types/glob': 7.2.0
       '@types/hapi__joi': 17.1.8
       '@types/lodash': 4.14.182
+      '@types/mustache': 4.2.1
       '@types/prompts': 2.0.14
       '@types/rimraf': 3.0.2
       '@types/semver': 7.3.9
@@ -176,6 +179,7 @@ importers:
       import-lazy: 4.0.0
       leven: 4.0.0
       lodash: 4.17.21
+      mustache: 4.2.0
       prompts: 2.4.2
       rimraf: 3.0.2
       semver: 7.3.7
@@ -2950,6 +2954,10 @@ packages:
 
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
+    dev: true
+
+  /@types/mustache/4.2.1:
+    resolution: {integrity: sha512-gFAlWL9Ik21nJioqjlGCnNYbf9zHi0sVbaZ/1hQEBcCEuxfLJDvz4bVJSV6v6CUaoLOz0XEIoP7mSrhJ6o237w==}
     dev: true
 
   /@types/node/12.20.24:
@@ -9339,6 +9347,11 @@ packages:
       array-union: 2.1.0
       arrify: 2.0.1
       minimatch: 3.1.2
+    dev: true
+
+  /mustache/4.2.0:
+    resolution: {integrity: sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==}
+    hasBin: true
     dev: true
 
   /mute-stream/0.0.8:

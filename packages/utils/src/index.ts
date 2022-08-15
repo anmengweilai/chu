@@ -13,6 +13,7 @@ import fsExtra from '../compiled/fs-extra';
 import { glob } from '../compiled/glob';
 import leven from '../compiled/leven';
 import lodash from '../compiled/lodash';
+import mustache from '../compiled/mustache';
 import prompts from '../compiled/prompts';
 import rimraf from '../compiled/rimraf';
 import semver from '../compiled/semver';
@@ -34,6 +35,7 @@ export {
   execa,
   fsExtra,
   lodash,
+  mustache,
   prompts,
   rimraf,
   semver,
