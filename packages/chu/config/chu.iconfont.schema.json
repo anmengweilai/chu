@@ -23,14 +23,46 @@
         },
         "unicode": {
           "default": {},
-          "type": "object"
+          "type": "object",
+          "$ref": "#/definitions/unicodeSchema"
         },
         "fontClass": {
           "default": {},
-          "type": "object"
+          "type": "object",
+          "$ref": "#/definitions/fontClassSchema"
+        },
+        "clear": {
+          "default": true,
+          "type": "boolean"
         }
       },
       "required": ["name"]
+    },
+    "fontClassSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "cdn": {
+          "default": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "unicodeSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "cdn": {
+          "default": false,
+          "type": "boolean"
+        },
+        "iconfontClassName": {
+          "default": "iconfont",
+          "type": "string"
+        },
+        "suffixes": {
+          "default": ["eot", "woff2", "woff", "ttf", "svg"],
+          "type": "array"
+        }
+      }
     }
   }
 }

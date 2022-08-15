@@ -102,6 +102,7 @@ export default async function (_value: any, _options: IconFontOptions) {
 }
 
 const getResFile = async (url: string, options: AxiosRequestConfig = {}) => {
+  // @ts-ignore
   logger.wait('Download iconfont file resources ...');
   try {
     const { data } = await axios.get(url, { ...options });
@@ -148,6 +149,7 @@ const useUnicodeTypeIcon = async (config: IconFontConfig) => {
     if (!iconfontData) continue;
     const baseSavePath = config.path;
     const saveJsPath = join(baseSavePath, `${config.name}.${suffix}`);
+    // @ts-ignore
     logger.wait(`Write iconfont file :${config.name}.${suffix}  ...`);
     fsExtra.ensureFileSync(saveJsPath);
     fsExtra.writeFileSync(saveJsPath, new Buffer(iconfontData), { mode: 777 });
@@ -216,7 +218,7 @@ const useSymbolTypeIcon = async (config: IconFontConfig) => {
   fsExtra.writeFileSync(saveJsPath, iconfontData, {
     encoding: 'utf-8',
   });
-
+  // @ts-ignore
   logger.wait('Write iconfont.md ...');
   fsExtra.ensureFileSync(saveMdPath);
   fsExtra.writeFileSync(saveMdPath, iconIdList.join(''), {
