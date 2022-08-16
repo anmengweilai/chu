@@ -19,6 +19,7 @@ import rimraf from '../compiled/rimraf';
 import semver from '../compiled/semver';
 import stripAnsi from '../compiled/strip-ansi';
 import yParser from '../compiled/yargs-parser';
+import Generator from './Generator/Generator';
 import { isLocalDev } from './methods/isLocalDev';
 import * as logger from './methods/logger';
 
@@ -46,4 +47,5 @@ export {
   logger,
   leven,
   isLocalDev,
+  Generator,
 };
