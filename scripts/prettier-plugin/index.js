@@ -1,4 +1,3 @@
-// TODO 该插件破坏了文件的导入 等待后续修复
 const { parsers } = require('prettier-plugin-organize-imports');
 
 function createParser(original, transform) {
