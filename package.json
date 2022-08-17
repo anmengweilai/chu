@@ -36,8 +36,8 @@
     ]
   },
   "devDependencies": {
-    "@chu/test": "1.0.0",
-    "@chu/utils": "1.0.0",
+    "@chu/test": "workspace:*",
+    "@chu/utils": "workspace:*",
     "@pnpm/lockfile-file": "^5.3.1",
     "@pnpm/logger": "^4.0.0",
     "@types/cross-spawn": "^6.0.2",
