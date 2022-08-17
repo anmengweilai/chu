@@ -17,7 +17,8 @@
   "files": [
     "dist",
     "index.d.ts",
-    "bin"
+    "bin",
+    "tsup.config.ts"
   ],
   "scripts": {
     "build": "chu-scripts father build",

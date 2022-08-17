@@ -10,8 +10,8 @@ const COMMON_IGNORES = [
   // deps
   'node_modules',
   // for test
-  'fixtures',
-  'examples',
+  // 'fixtures',
+  // 'examples',
   'scripts',
   // source
   'src',
@@ -24,7 +24,7 @@ const COMMON_IGNORES = [
   'package.json',
   'typings.d.ts',
   // extra
-  'devToolApp',
+  // 'devToolApp',
 ];
 
 // check packages/*
