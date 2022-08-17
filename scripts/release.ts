@@ -33,19 +33,19 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
   assert(changed, `no package is changed`);
 
   // check npm ownership 检测要提交的包与 当前npm是否有对应的 作者信息
-  logger.event('check npm ownership');
-  const whoami = (await $`npm whoami`).stdout.trim();
-  await Promise.all(
-    ['@chu/cli'].map(async (pkg) => {
-      const owners = (await $`npm owner ls ${pkg}`).stdout
-        .trim()
-        .split('\n')
-        .map((line) => {
-          return line.split(' ')[0];
-        });
-      assert(owners.includes(whoami), `${pkg} is not owned by ${whoami}`);
-    }),
-  );
+  // logger.event('check npm ownership');
+  // const whoami = (await $`npm whoami`).stdout.trim();
+  // await Promise.all(
+  //   ['@chu/cli'].map(async (pkg) => {
+  //     const owners = (await $`npm owner ls ${pkg}`).stdout
+  //       .trim()
+  //       .split('\n')
+  //       .map((line) => {
+  //         return line.split(' ')[0];
+  //       });
+  //     assert(owners.includes(whoami), `${pkg} is not owned by ${whoami}`);
+  //   }),
+  // );
 
   // check package.json  检验项目文件完整性
   logger.event('check package.json info');
