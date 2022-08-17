@@ -138,13 +138,16 @@ async function generatePrompt(
 ) {
   const hasPath: string[] = [];
   const choices: ChoiceOptions[] = [];
+  const baseDirPath = baseProjectsDirPath.endsWith('/')
+    ? baseProjectsDirPath.substring(0, baseProjectsDirPath.length - 1)
+    : baseProjectsDirPath;
   allBaseProjectDirPaths.forEach((item) => {
-    const name = item.replace(baseProjectsDirPath, '').split('/')[1];
-    if (!hasPath.includes(name) && item.includes(baseProjectsDirPath)) {
+    const name = item.replace(baseDirPath, '').split('/')[1];
+    if (!hasPath.includes(name) && item.includes(baseDirPath)) {
       hasPath.push(name);
       choices.push({
         name,
-        value: join(baseProjectsDirPath, name),
+        value: join(baseDirPath, name),
       });
     }
   });
@@ -155,9 +158,20 @@ async function generatePrompt(
     chooseProject: string;
   };
 
-  let paths = allBaseProjectDirPaths.filter((item) =>
-    item.includes(baseProjectsDirPathStr),
-  );
+  let paths = [];
+  const pathStr = baseProjectsDirPathStr.endsWith('/')
+    ? baseProjectsDirPathStr
+    : baseProjectsDirPathStr + '/';
+  for (const itemPath of allBaseProjectDirPaths) {
+    if (itemPath === pathStr) {
+      console.log(true);
+      paths = [itemPath];
+      break;
+    }
+    if (itemPath.includes(pathStr)) {
+      paths.push(itemPath);
+    }
+  }
 
   if (paths.length > 1) {
     await generatePrompt(paths, baseProjectsDirPathStr);
