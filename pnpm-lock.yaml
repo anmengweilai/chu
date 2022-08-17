@@ -81,7 +81,7 @@ importers:
   packages/chu:
     specifiers:
       '@babel/runtime': ^7.18.9
-      '@chu/utils': 1.0.1
+      '@chu/utils': 1.0.2
       '@types/inquirer': ^9.0.0
       fuse.js: ^6.6.2
       inquirer: ^7.2.0
@@ -92,9 +92,6 @@ importers:
       inquirer: 7.3.3
     devDependencies:
       '@types/inquirer': 9.0.0
-
-  packages/preset-chu:
-    specifiers: {}
 
   packages/testing:
     specifiers:
