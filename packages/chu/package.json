@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
-    "@chu/utils": "workspace:*",
+    "@chu/utils": "1.0.0",
     "fuse.js": "^6.6.2",
     "inquirer": "^7.2.0"
   },
