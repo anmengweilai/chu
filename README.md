@@ -10,7 +10,7 @@
 
 ### 安装
 ```shell
-$ pnpm install @chu/cli -g
+$ pnpm install @anmengweilai/cli -g
 ```
 
 ### 显示指定位置项目文件

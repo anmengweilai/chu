@@ -1,4 +1,4 @@
-import { fsExtra, hasPnpm, hasYarn } from '@chu/utils';
+import { fsExtra, hasPnpm, hasYarn } from '@anmengweilai/utils';
 import { join } from 'path';
 
 export function checkNodeEnv(cwd = '') {

@@ -1,4 +1,4 @@
-import { exit, fsExtra, isLocalDev } from '@chu/utils';
+import { exit, fsExtra, isLocalDev } from '@anmengweilai/utils';
 import os from 'os';
 import path, { join } from 'path';
 import { platform } from 'process';

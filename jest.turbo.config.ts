@@ -1,4 +1,4 @@
-import { Config, createConfig } from '@chu/test';
+import { Config, createConfig } from '@anmengweilai/test';
 
 const cwd = process.cwd();
 

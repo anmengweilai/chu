@@ -7,8 +7,8 @@ import {
   isLocalDev,
   logger,
   mustache,
-} from '@chu/utils';
-import type { AxiosRequestConfig } from '@chu/utils/compiled/axios';
+} from '@anmengweilai/utils';
+import type { AxiosRequestConfig } from '@anmengweilai/utils/compiled/axios';
 import { join } from 'path';
 import { DEFAULT_CHU_ICON_FONT_FILE_NAME } from '../constants';
 import { checkConfigFile } from '../utils/checkConfigFile';

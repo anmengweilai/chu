@@ -1,5 +1,4 @@
 {
-  "version": "1.0.0",
   "private": true,
   "keywords": [],
   "license": "ISC",
@@ -36,8 +35,8 @@
     ]
   },
   "devDependencies": {
-    "@chu/test": "workspace:*",
-    "@chu/utils": "workspace:*",
+    "@anmengweilai/test": "workspace:*",
+    "@anmengweilai/utils": "workspace:*",
     "@pnpm/lockfile-file": "^5.3.1",
     "@pnpm/logger": "^4.0.0",
     "@types/cross-spawn": "^6.0.2",

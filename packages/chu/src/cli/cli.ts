@@ -1,4 +1,4 @@
-import { exit, logger } from '@chu/utils';
+import { exit, logger } from '@anmengweilai/utils';
 import { checkDefConfigRcFile } from '../utils/rcFile';
 import { settingCommandsOptions } from './commander';
 import {

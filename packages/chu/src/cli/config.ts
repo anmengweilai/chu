@@ -1,4 +1,10 @@
-import { chalk, fsExtra, getObjVal, setObjVal, unsetObjVal } from '@chu/utils';
+import {
+  chalk,
+  fsExtra,
+  getObjVal,
+  setObjVal,
+  unsetObjVal,
+} from '@anmengweilai/utils';
 import { getRcPath } from '../utils/rcFile';
 
 interface IOptions {

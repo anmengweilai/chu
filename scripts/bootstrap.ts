@@ -17,7 +17,7 @@ import { setExcludeFolder } from './.internal/utils';
     if (['chu'].includes(pkgName)) {
       return pkgName;
     } else {
-      return `@chu/${pkgName}`;
+      return `@anmengweilai/${pkgName}`;
     }
   }
 

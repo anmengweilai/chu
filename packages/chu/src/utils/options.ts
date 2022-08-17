@@ -1,4 +1,4 @@
-import { createSchema, exit, logger, validate } from '@chu/utils';
+import { createSchema, exit, logger, validate } from '@anmengweilai/utils';
 import fs from 'fs';
 import { getRcPath } from './rcFile';
 

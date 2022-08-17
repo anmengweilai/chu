@@ -1,4 +1,4 @@
-import { chalk, execa, exit, fsExtra, logger } from '@chu/utils';
+import { chalk, execa, exit, fsExtra, logger } from '@anmengweilai/utils';
 import inquirer, { ChoiceOptions } from 'inquirer';
 import { join } from 'path';
 import createScriptsPrompt from '../promptModules/npmScripts';
