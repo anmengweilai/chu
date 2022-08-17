@@ -2,10 +2,11 @@ import { logger } from '@/packages/utils/src';
 import { existsSync } from 'fs';
 import getGitRepoInfo from 'git-repo-info';
 import { join } from 'path';
-import rimraf from 'rimraf';
+// import rimraf from 'rimraf';
 import 'zx/globals';
 import { PATHS } from './.internal/constants';
-import { assert, eachPkg, getPkgs } from './.internal/utils';
+// import { assert, eachPkg, getPkgs } from './.internal/utils';
+import { assert, getPkgs } from './.internal/utils';
 
 (async () => {
   const gitRepoInfo = getGitRepoInfo();
@@ -52,11 +53,11 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
   await $`npm run check:packageFiles`;
 
   // clean
-  logger.event('clean');
-  eachPkg(pkgs, ({ dir, name }) => {
-    logger.info(`clean dist of ${name}`);
-    rimraf.sync(join(dir, 'dist'));
-  });
+  // logger.event('clean');
+  // eachPkg(pkgs, ({ dir, name }) => {
+  //   logger.info(`clean dist of ${name}`);
+  //   rimraf.sync(join(dir, 'dist'));
+  // });
 
   // build packages
   logger.event('build packages');
