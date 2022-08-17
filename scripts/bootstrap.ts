@@ -59,7 +59,7 @@ import { setExcludeFolder } from './.internal/utils';
               url: 'https://github.com/anmengweilai/chu',
             },
             authors: [
-              'anmengweilai <chumengyouying@outlook.com> (https://github.com/anmengweilai)',
+              'anmeng <chumengyouying@outlook.com> (https://github.com/anmengweilai)',
             ],
             license: 'MIT',
             bugs: 'https://github.com/anmengweilai/chu/issues',
