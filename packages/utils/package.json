@@ -19,7 +19,8 @@
     "build": "chu-scripts father build",
     "build:deps": "chu-scripts bundleDeps",
     "build:tsc": "pnpm tsc",
-    "dev": "chu-scripts father dev"
+    "dev": "chu-scripts father dev",
+    "test": "chu-scripts jest-turbo"
   },
   "dependencies": {
     "pino": "^8.3.1"

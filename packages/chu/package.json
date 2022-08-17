@@ -24,7 +24,8 @@
     "build:deps": "chu-scripts bundleDeps",
     "build:tsc": "pnpm tsc",
     "dev": "chu-scripts father dev",
-    "dev:tsc": "pnpm tsc --watch"
+    "dev:tsc": "pnpm tsc --watch",
+    "test": "chu-scripts jest-turbo"
   },
   "dependencies": {
     "@babel/runtime": "^7.18.9",
