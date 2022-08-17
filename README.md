@@ -1,5 +1,6 @@
 # chu 
 
+参考 @vue/cli @umi/cli
 #####  已完成使用功能（后续添加中）:  ☑️ ✅
 
 + 显示指定位置项目文件 ✅
@@ -75,3 +76,7 @@ $ chu iconfont
   "clear": true
 }
 ```
+
+## LICENSE
+
+[MIT](./LICENSE)
