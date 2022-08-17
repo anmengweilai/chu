@@ -1,7 +1,5 @@
 import { logger } from '@/packages/utils/src';
-import { existsSync } from 'fs';
 import getGitRepoInfo from 'git-repo-info';
-import { join } from 'path';
 // import rimraf from 'rimraf';
 import 'zx/globals';
 import { PATHS } from './.internal/constants';
@@ -89,29 +87,29 @@ import { assert, getPkgs } from './.internal/utils';
   if (version.includes('-canary.')) tag = 'canary';
 
   // update example versions
-  logger.event('update example versions');
-  const examplesDir = PATHS.EXAMPLES;
-  const examples = fs.readdirSync(examplesDir).filter((dir) => {
-    return (
-      !dir.startsWith('.') && existsSync(join(examplesDir, dir, 'package.json'))
-    );
-  });
-  examples.forEach((example) => {
-    const pkg = require(join(examplesDir, example, 'package.json'));
-    pkg.scripts ||= {};
-    pkg.scripts['start'] = 'npm run dev';
-    // change deps version
-    setDepsVersion({
-      pkg,
-      version,
-      deps: ['@chu/cli'],
-    });
-    delete pkg.version;
-    fs.writeFileSync(
-      join(examplesDir, example, 'package.json'),
-      `${JSON.stringify(pkg, null, 2)}\n`,
-    );
-  });
+  // logger.event('update example versions');
+  // const examplesDir = PATHS.EXAMPLES;
+  // const examples = fs.readdirSync(examplesDir).filter((dir) => {
+  //   return (
+  //     !dir.startsWith('.') && existsSync(join(examplesDir, dir, 'package.json'))
+  //   );
+  // });
+  // examples.forEach((example) => {
+  //   const pkg = require(join(examplesDir, example, 'package.json'));
+  //   pkg.scripts ||= {};
+  //   pkg.scripts['start'] = 'npm run dev';
+  //   // change deps version
+  //   setDepsVersion({
+  //     pkg,
+  //     version,
+  //     deps: ['@chu/cli'],
+  //   });
+  //   delete pkg.version;
+  //   fs.writeFileSync(
+  //     join(examplesDir, example, 'package.json'),
+  //     `${JSON.stringify(pkg, null, 2)}\n`,
+  //   );
+  // });
 
   // update pnpm lockfile
   logger.event('update pnpm lockfile');
@@ -178,20 +176,20 @@ import { assert, getPkgs } from './.internal/utils';
   // $.verbose = true;
 })();
 
-function setDepsVersion(opts: {
-  deps: string[];
-  pkg: Record<string, any>;
-  version: string;
-}) {
-  const { deps, pkg, version } = opts;
-  pkg.dependencies ||= {};
-  deps.forEach((dep) => {
-    if (pkg?.dependencies?.[dep]) {
-      pkg.dependencies[dep] = version;
-    }
-    if (pkg?.devDependencies?.[dep]) {
-      pkg.devDependencies[dep] = version;
-    }
-  });
-  return pkg;
-}
+// function setDepsVersion(opts: {
+//   deps: string[];
+//   pkg: Record<string, any>;
+//   version: string;
+// }) {
+//   const { deps, pkg, version } = opts;
+//   pkg.dependencies ||= {};
+//   deps.forEach((dep) => {
+//     if (pkg?.dependencies?.[dep]) {
+//       pkg.dependencies[dep] = version;
+//     }
+//     if (pkg?.devDependencies?.[dep]) {
+//       pkg.devDependencies[dep] = version;
+//     }
+//   });
+//   return pkg;
+// }
