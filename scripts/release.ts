@@ -36,7 +36,7 @@ import { assert, getPkgs } from './.internal/utils';
   const whoami = (await $`npm whoami`).stdout.trim();
   logger.event(`whoami : ${whoami}`);
   await Promise.all(
-    ['chume'].map(async (pkg) => {
+    ['@anmengweilai/chu'].map(async (pkg) => {
       const owners = (await $`npm owner ls ${pkg}`).stdout
         .trim()
         .split('\n')
@@ -103,7 +103,7 @@ import { assert, getPkgs } from './.internal/utils';
   //   setDepsVersion({
   //     pkg,
   //     version,
-  //     deps: ['chume'],
+  //     deps: ['@anmengweilai/chu'],
   //   });
   //   delete pkg.version;
   //   fs.writeFileSync(
@@ -141,7 +141,7 @@ import { assert, getPkgs } from './.internal/utils';
   // npm publish
   logger.event('pnpm publish');
   $.verbose = false;
-  const innerPkgs = pkgs.filter((pkg) => !['chume'].includes(pkg));
+  const innerPkgs = pkgs.filter((pkg) => !['@anmengweilai/chu'].includes(pkg));
 
   // check 2fa config
   let otpArg: string[] = [];
@@ -165,7 +165,7 @@ import { assert, getPkgs } from './.internal/utils';
     }),
   );
   await $`cd packages/chu && npm publish --tag ${tag} ${otpArg}`;
-  logger.info(`+ chume`);
+  logger.info(`+ @anmengweilai/chu`);
   // TODO 添加还需要发布的包
 
   $.verbose = true;

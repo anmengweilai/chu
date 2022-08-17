@@ -1,5 +1,5 @@
 {
-  "name": "chume",
+  "name": "@anmengweilai/chu",
   "version": "1.0.2",
   "description": "anmengweilai - chumengyouying",
   "homepage": "https://github.com/anmengweilai/chu/tree/master/packages/chu#readme",
@@ -30,7 +30,7 @@
     "test": "chu-scripts jest-turbo"
   },
   "dependencies": {
-    "@anmeng/utils": "1.0.2",
+    "@anmengweilai/utils": "1.0.2",
     "@babel/runtime": "^7.18.9",
     "fuse.js": "^6.6.2",
     "inquirer": "^7.2.0"

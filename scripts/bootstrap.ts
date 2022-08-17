@@ -14,11 +14,12 @@ import { setExcludeFolder } from './.internal/utils';
   }
 
   function getName(pkgName: string) {
-    if (['chu'].includes(pkgName)) {
-      return pkgName;
-    } else {
-      return `@anmengweilai/${pkgName}`;
-    }
+    // if (['chu'].includes(pkgName)) {
+    //   return pkgName;
+    // } else {
+    //   return `@anmengweilai/${pkgName}`;
+    // }
+    return `@anmengweilai/${pkgName}`;
   }
 
   function getVersion() {
