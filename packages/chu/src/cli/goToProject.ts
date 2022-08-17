@@ -1,4 +1,4 @@
-import { exit, fsExtra, logger } from '@anmengweilai/utils';
+import { exit, fsExtra, logger } from '@anmeng/utils';
 import fastGlob from 'fast-glob';
 import inquirer, { ChoiceOptions } from 'inquirer';
 // import os from 'os';

@@ -1,6 +1,6 @@
 // import * as logger from ;
-import { logger } from '@anmengweilai/utils';
-import spawn from '@anmengweilai/utils/compiled/cross-spawn';
+import { logger } from '@anmeng/utils';
+import spawn from '@anmeng/utils/compiled/cross-spawn';
 import type { SpawnSyncOptions } from 'child_process';
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';

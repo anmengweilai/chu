@@ -1,4 +1,4 @@
-import { chalk, commander, leven } from '@anmengweilai/utils';
+import { chalk, commander, leven } from '@anmeng/utils';
 import { configure } from './config';
 import goToProject from './goToProject';
 import createIconFont from './iconFont';
@@ -10,7 +10,7 @@ const program = new Command();
 
 export const settingCommandsOptions = async () => {
   program
-    .version(`@anmengweilai/cli ${require('../../package.json').version}`)
+    .version(`@anmeng/cli ${require('../../package.json').version}`)
     .usage('<command> [options]');
 
   // @ts-ignore

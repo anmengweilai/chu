@@ -1,4 +1,4 @@
-import { exit, isLocalDev, logger } from '@anmengweilai/utils';
+import { exit, isLocalDev, logger } from '@anmeng/utils';
 import { FRAMEWORK_NAME, MIN_NODE_VERSION } from '../constants';
 
 export function checkVersion() {

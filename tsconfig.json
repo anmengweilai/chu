@@ -6,7 +6,7 @@
       "@/*": ["*"],
       "@@/*": [".chu/*"],
       "chu": ["./packages/chu"],
-      "@anmengweilai/utils": ["./packages/utils"],
+      "@anmeng/utils": ["./packages/utils"],
       "test-utils": ["test/lib/testUtils"]
     }
   }

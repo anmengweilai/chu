@@ -1,4 +1,4 @@
-import { Config, createConfig } from '@anmengweilai/test';
+import { Config, createConfig } from '@anmeng/test';
 
 export default {
   ...createConfig(),

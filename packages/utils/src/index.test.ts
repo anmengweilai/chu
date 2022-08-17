@@ -1,5 +1,5 @@
 import index from './index';
 
 test('normal', () => {
-  expect(index()).toEqual('@anmengweilai/utils');
+  expect(index()).toEqual('@anmeng/utils');
 });

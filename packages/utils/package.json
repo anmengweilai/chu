@@ -1,7 +1,7 @@
 {
-  "name": "@anmengweilai/utils",
+  "name": "@anmeng/utils",
   "version": "1.0.3",
-  "description": "@anmengweilai/utils",
+  "description": "@anmeng/utils",
   "homepage": "https://github.com/anmengweilai/chu/tree/master/packages/utils#readme",
   "bugs": "https://github.com/anmengweilai/chu/issues",
   "repository": {

@@ -1,5 +1,5 @@
 export default () => {
-  return '@anmengweilai/utils';
+  return '@anmeng/utils';
 };
 
 import axios from 'axios';

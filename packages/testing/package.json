@@ -1,7 +1,7 @@
 {
-  "name": "@anmengweilai/test",
+  "name": "@anmeng/test",
   "version": "1.0.3",
-  "description": "@anmengweilai/test",
+  "description": "@anmeng/test",
   "homepage": "https://github.com/anmengweilai/chu/tree/master/packages/testing#readme",
   "bugs": "https://github.com/anmengweilai/chu/issues",
   "repository": {

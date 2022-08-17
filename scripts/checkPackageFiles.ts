@@ -1,4 +1,4 @@
-import { glob, lodash, logger } from '@anmengweilai/utils';
+import { glob, lodash, logger } from '@anmeng/utils';
 import { isMatch } from 'matcher';
 import 'zx/globals';
 // import { PATHS, SCRIPTS } from './.internal/constants';

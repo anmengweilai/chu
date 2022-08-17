@@ -1,4 +1,4 @@
-import { fsExtra } from '@anmengweilai/utils';
+import { fsExtra } from '@anmeng/utils';
 
 /**
  * 只要当前存在一个列表中的指定文件都会返回文件类型

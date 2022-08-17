@@ -1,11 +1,4 @@
-import {
-  chalk,
-  execa,
-  exit,
-  hasPnpm,
-  hasYarn,
-  logger,
-} from '@anmengweilai/utils';
+import { chalk, execa, exit, hasPnpm, hasYarn, logger } from '@anmeng/utils';
 import { execSync } from 'child_process';
 // @ts-ignore
 import inquirer from 'inquirer'; // TODO 此处使用的是7.x.x 版本 最新的9.x.x 版本会被解析成cj类型模块引入

@@ -4,7 +4,7 @@ import {
   getObjVal,
   setObjVal,
   unsetObjVal,
-} from '@anmengweilai/utils';
+} from '@anmeng/utils';
 import { getRcPath } from '../utils/rcFile';
 
 interface IOptions {

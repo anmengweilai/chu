@@ -17,9 +17,9 @@ import { setExcludeFolder } from './.internal/utils';
     // if (['chu'].includes(pkgName)) {
     //   return pkgName;
     // } else {
-    //   return `@anmengweilai/${pkgName}`;
+    //   return `@anmeng/${pkgName}`;
     // }
-    return `@anmengweilai/${pkgName}`;
+    return `@anmeng/${pkgName}`;
   }
 
   function getVersion() {

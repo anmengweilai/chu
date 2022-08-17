@@ -4,8 +4,8 @@ importers:
 
   .:
     specifiers:
-      '@anmengweilai/test': workspace:*
-      '@anmengweilai/utils': workspace:*
+      '@anmeng/test': workspace:*
+      '@anmeng/utils': workspace:*
       '@pnpm/lockfile-file': ^5.3.1
       '@pnpm/logger': ^4.0.0
       '@types/cross-spawn': ^6.0.2
@@ -41,8 +41,8 @@ importers:
       typescript: ^4.7.4
       zx: ^7.0.7
     devDependencies:
-      '@anmengweilai/test': link:packages/testing
-      '@anmengweilai/utils': link:packages/utils
+      '@anmeng/test': link:packages/testing
+      '@anmeng/utils': link:packages/utils
       '@pnpm/lockfile-file': 5.3.2_@pnpm+logger@4.0.0
       '@pnpm/logger': 4.0.0
       '@types/cross-spawn': 6.0.2
@@ -80,13 +80,13 @@ importers:
 
   packages/chu:
     specifiers:
-      '@anmengweilai/utils': 1.0.3
+      '@anmeng/utils': 1.0.3
       '@babel/runtime': ^7.18.9
       '@types/inquirer': ^9.0.0
       fuse.js: ^6.6.2
       inquirer: ^7.2.0
     dependencies:
-      '@anmengweilai/utils': link:../utils
+      '@anmeng/utils': link:../utils
       '@babel/runtime': 7.18.9
       fuse.js: 6.6.2
       inquirer: 7.3.3

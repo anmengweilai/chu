@@ -35,8 +35,8 @@
     ]
   },
   "devDependencies": {
-    "@anmengweilai/test": "workspace:*",
-    "@anmengweilai/utils": "workspace:*",
+    "@anmeng/test": "workspace:*",
+    "@anmeng/utils": "workspace:*",
     "@pnpm/lockfile-file": "^5.3.1",
     "@pnpm/logger": "^4.0.0",
     "@types/cross-spawn": "^6.0.2",
