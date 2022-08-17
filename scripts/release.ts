@@ -117,6 +117,12 @@ import { assert, getPkgs } from './.internal/utils';
   await $`pnpm i`;
   $.verbose = true;
 
+  logger.event('setting file permission');
+  await $`chmod -R 777 *`;
+
+  logger.event('add -A');
+  await $`git add -A`;
+
   // commit
   logger.event('commit');
   await $`git commit --all --message "release: ${version}"`;
