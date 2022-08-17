@@ -164,7 +164,6 @@ async function generatePrompt(
     : baseProjectsDirPathStr + '/';
   for (const itemPath of allBaseProjectDirPaths) {
     if (itemPath === pathStr) {
-      console.log(true);
       paths = [itemPath];
       break;
     }
