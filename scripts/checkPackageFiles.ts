@@ -1,6 +1,6 @@
-import { glob, lodash, logger } from '@/packages/utils/src';
 import { isMatch } from 'matcher';
 import 'zx/globals';
+import { glob, lodash, logger } from '../packages/utils/src';
 // import { PATHS, SCRIPTS } from './.internal/constants';
 import { SCRIPTS } from './.internal/constants';
 import { eachPkg, getPkgs } from './.internal/utils';
