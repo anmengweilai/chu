@@ -2,7 +2,7 @@ export default () => {
   return '@anmeng/utils';
 };
 
-import axios from 'axios';
+import axios from '../compiled/axios';
 import chalk from '../compiled/chalk';
 import commander from '../compiled/commander';
 import crossSpawn from '../compiled/cross-spawn';

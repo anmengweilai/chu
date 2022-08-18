@@ -8,6 +8,9 @@
 + 切换 npm registry url ✅（更多相关请使用 nrm)
 + 当前项目创建 iconfont 资源文件 ✅
 
+#######
+需要移除本地不需要的的 npm link xxxx 在无效的情况下  linux系统下可以尝试直接去 /usr/local/bin  下查找是否需要删除对应的文件
+
 ### 安装
 ```shell
 $ pnpm install @anmeng/cli -g
