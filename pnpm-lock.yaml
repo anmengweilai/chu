@@ -80,7 +80,7 @@ importers:
 
   packages/chu:
     specifiers:
-      '@anmeng/utils': 1.0.4
+      '@anmeng/utils': 1.0.5
       '@babel/runtime': ^7.18.9
       '@types/inquirer': ^9.0.0
       fuse.js: ^6.6.2
