@@ -1,8 +1,8 @@
 import chalk from '@/scripts/compiled/chalk';
-import fastGlob from 'fast-glob';
 import fs from 'fs';
 import path from 'path';
 import 'zx/globals';
+import fastGlob from '../packages/utils/compiled/fast-glob';
 
 (async () => {
   const args = process.argv.slice(2);

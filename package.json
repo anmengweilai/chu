@@ -47,7 +47,6 @@
     "@types/rimraf": "3.0.2",
     "@vercel/ncc": "0.33.3",
     "dts-packer": "^0.0.3",
-    "fast-glob": "^3.2.11",
     "father": "4.0.0-rc.7",
     "fs-extra": "^10.1.0",
     "git-repo-info": "^2.1.1",
