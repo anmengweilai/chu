@@ -11,7 +11,7 @@
     "bootstrap": "chu-scripts bootstrap",
     "build": "turbo run build",
     "build:deps": "chu-scripts bundleDeps",
-    "build:release": "chu-scripts turbo build",
+    "build:release": "chu-scripts turbo build --no-cache",
     "check:packageFiles": "chu-scripts checkPackageFiles",
     "dev": "turbo run dev --parallel",
     "format": "prettier --cache --write .",
