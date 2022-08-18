@@ -1,5 +1,5 @@
 // import * as logger from ;
-import { logger } from '@anmeng/utils';
+import { logger } from '@/packages/utils/src';
 import spawn from '@anmeng/utils/compiled/cross-spawn';
 import type { SpawnSyncOptions } from 'child_process';
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'fs';
