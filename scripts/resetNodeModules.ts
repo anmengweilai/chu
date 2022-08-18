@@ -5,14 +5,18 @@ import path from 'path';
 import 'zx/globals';
 
 (async () => {
+  const args = process.argv.slice(2);
+
   const basePath = process.cwd();
   const files = await fastGlob(['packages/**/package.json'], {
     cwd: basePath,
     ignore: ['**/node_modules/**', '**/compiled/**'],
   });
 
-  console.log(`${chalk.green('------ start build ------')}`);
-  await $`pnpm build`;
+  if (!args.includes('--no-build')) {
+    console.log(`${chalk.green('------ start build ------')}`);
+    await $`pnpm build`;
+  }
 
   for (const filePath of files) {
     const deletePath = path.join(

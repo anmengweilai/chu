@@ -116,7 +116,7 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
   // update pnpm lockfile
   logger.event('update pnpm lockfile');
   $.verbose = false;
-  await $`pnpm i`;
+  await $`pnpm reset --no-build`;
   $.verbose = true;
 
   logger.event('setting file permission');

@@ -25,10 +25,10 @@ $ chu config -s baseProjectsDirPaths ['xxx/xxx/xxx']
 $ chu project 
 
 # 显示相关的项目带有筛选
-$ chu project -f | --filter [name]
+$ chu project -f , --filter [name]
 
 # 显示树状选折项目
-$ chu project -c | --choose
+$ chu project -c , --choose
 ```
 
 ### 显示当前项目中scripts 选折并执行
@@ -37,7 +37,7 @@ $ chu project -c | --choose
 $ chu scripts
 
 # 展示package.json 中设置的scripts
-$ chu scripts -s | --show
+$ chu scripts -s , --show
 ```
 
 ### 切换 npm registry url 
@@ -49,13 +49,13 @@ $ chu config -s otherNpmSource.xxxx 'https://xxx.xxxx.xxxx'
 $ chu setting 
 
 # 直接指定
-$ chu setting -c | --choose <registry-name>
+$ chu setting -c , --choose <registry-name>
 ```
 
 #### 当前项目创建 iconfont 资源文件
 ```shell
 # 创建指定 iconfont id 的资源文件 默认保存文件夹为当前项目 src/assets/static/iconfont 类型为 Symbol 
-$ chu iconfont -p | path xx/xx/xx -t | --type iconfontType -n | --name iconfont
+$ chu iconfont -p , path xx/xx/xx -t , --type iconfontType -n , --name iconfontName
 
 # 如果当前文件夹下有chu.iconfont.config.json 文件则会根据该文件来生成
 $ chu iconfont
