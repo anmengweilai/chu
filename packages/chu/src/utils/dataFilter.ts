@@ -1,4 +1,4 @@
-import Fuse from 'fuse.js';
+import { Fuse } from '@anmeng/utils';
 
 /**
  *  需要手动筛选数据 可调节的模糊-精准查询

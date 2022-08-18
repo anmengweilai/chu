@@ -142,7 +142,7 @@ import { assert, eachPkg, getPkgs } from './.internal/utils';
   // npm publish
   logger.event('pnpm publish');
   $.verbose = false;
-  const innerPkgs = pkgs.filter((pkg) => !['@anmeng/chu'].includes(pkg));
+  const innerPkgs = pkgs.filter((pkg) => !['chu'].includes(pkg));
 
   // check 2fa config
   let otpArg: string[] = [];

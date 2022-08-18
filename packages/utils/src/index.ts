@@ -9,7 +9,9 @@ import crossSpawn from '../compiled/cross-spawn';
 import debug from '../compiled/debug';
 import deepmerge from '../compiled/deepmerge';
 import * as execa from '../compiled/execa';
+import fastGlob from '../compiled/fast-glob';
 import fsExtra from '../compiled/fs-extra';
+import Fuse from '../compiled/fuse.js';
 import { glob } from '../compiled/glob';
 import leven from '../compiled/leven';
 import lodash from '../compiled/lodash';
@@ -34,6 +36,8 @@ export {
   debug,
   deepmerge,
   execa,
+  fastGlob,
+  Fuse,
   fsExtra,
   lodash,
   mustache,
