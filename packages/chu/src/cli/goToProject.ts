@@ -31,8 +31,6 @@ export default async function (
     return item;
   });
 
-  console.log({ baseProjectsDirPaths });
-
   let allBaseProjectDirPaths: string[] = [];
   for (let basePath of baseProjectsDirPaths) {
     const projectDirPaths = await fastGlob(['**/.git/config'], {
@@ -40,8 +38,6 @@ export default async function (
       dot: true,
       ignore: ['**/node_modules/**', '**/packages/**', '**/compiled/**'],
     });
-
-    console.log({ projectDirPaths });
 
     allBaseProjectDirPaths = allBaseProjectDirPaths.concat(
       projectDirPaths.map((path) => {
