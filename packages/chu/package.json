@@ -1,6 +1,6 @@
 {
   "name": "@anmeng/chu",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "anmengweilai - chumengyouying",
   "homepage": "https://github.com/anmengweilai/chu/tree/master/packages/chu#readme",
   "bugs": "https://github.com/anmengweilai/chu/issues",
@@ -30,7 +30,7 @@
     "test": "chu-scripts jest-turbo"
   },
   "dependencies": {
-    "@anmeng/utils": "1.0.7",
+    "@anmeng/utils": "1.0.8",
     "@babel/runtime": "^7.18.9",
     "inquirer": "^7.2.0"
   },
