@@ -1,10 +1,12 @@
-import { exit, fastGlob, fsExtra, logger } from '@anmeng/utils';
+import { exit, fastGlob, fsExtra, isWindows, logger } from '@anmeng/utils';
 import inquirer, { ChoiceOptions } from 'inquirer';
 // import os from 'os';
 import { join } from 'path';
 import createProjectPathsPrompt from '../promptModules/projectPaths';
 import { dataFilter } from '../utils/dataFilter';
 import { loadOptions } from '../utils/options';
+
+const sysSeparator = isWindows ? '\\' : '/';
 
 export default async function (
   value: { filter?: string; choose?: string },
@@ -22,11 +24,14 @@ export default async function (
   }
 
   baseProjectsDirPaths = baseProjectsDirPaths.map((item) => {
-    if (item[0] !== '/') {
-      item = `/${item}`;
+    if (isWindows) return item;
+    if (item[0] !== sysSeparator) {
+      item = `${sysSeparator}${item}`;
     }
     return item;
   });
+
+  console.log({ baseProjectsDirPaths });
 
   let allBaseProjectDirPaths: string[] = [];
   for (let basePath of baseProjectsDirPaths) {
@@ -35,6 +40,9 @@ export default async function (
       dot: true,
       ignore: ['**/node_modules/**', '**/packages/**', '**/compiled/**'],
     });
+
+    console.log({ projectDirPaths });
+
     allBaseProjectDirPaths = allBaseProjectDirPaths.concat(
       projectDirPaths.map((path) => {
         return join(basePath, path.split('.git/config')[0]);
@@ -61,8 +69,8 @@ async function chooseProjectOnList(
 ) {
   let choices: ChoiceOptions[] = [];
   for (let basePath of baseProjectsDirPaths) {
-    if (basePath[basePath.length - 1] !== '/') {
-      basePath = `${basePath}/`;
+    if (basePath[basePath.length - 1] !== sysSeparator) {
+      basePath = `${basePath}${sysSeparator}`;
     }
     for (const baseProPath of allBaseProjectDirPaths) {
       const jsonPath = join(baseProPath, 'package.json');
@@ -75,7 +83,7 @@ async function chooseProjectOnList(
       } else {
         name = baseProPath
           .slice(0, baseProPath.length - 1)
-          .split('/')
+          .split(sysSeparator)
           .pop() as string;
       }
 
@@ -111,7 +119,7 @@ async function chooseProjectOnThree(
 ) {
   const choices: ChoiceOptions[] = baseProjectsDirPaths.map((item) => {
     return {
-      name: item.split('/').pop(),
+      name: item.split(sysSeparator).pop(),
       value: item,
     };
   });
@@ -121,8 +129,8 @@ async function chooseProjectOnThree(
   ])) as {
     chooseProject: string;
   };
-  if (baseProjectsDirPath.charAt(0) !== '/') {
-    baseProjectsDirPath = `/${baseProjectsDirPath}`;
+  if (baseProjectsDirPath.charAt(0) !== sysSeparator) {
+    baseProjectsDirPath = `${sysSeparator}${baseProjectsDirPath}`;
   }
   let paths = allBaseProjectDirPaths.filter((item) =>
     item.includes(baseProjectsDirPath),
@@ -137,11 +145,11 @@ async function generatePrompt(
 ) {
   const hasPath: string[] = [];
   const choices: ChoiceOptions[] = [];
-  const baseDirPath = baseProjectsDirPath.endsWith('/')
+  const baseDirPath = baseProjectsDirPath.endsWith(sysSeparator)
     ? baseProjectsDirPath.substring(0, baseProjectsDirPath.length - 1)
     : baseProjectsDirPath;
   allBaseProjectDirPaths.forEach((item) => {
-    const name = item.replace(baseDirPath, '').split('/')[1];
+    const name = item.replace(baseDirPath, '').split(sysSeparator)[1];
     if (!hasPath.includes(name) && item.includes(baseDirPath)) {
       hasPath.push(name);
       choices.push({
@@ -158,9 +166,9 @@ async function generatePrompt(
   };
 
   let paths = [];
-  const pathStr = baseProjectsDirPathStr.endsWith('/')
+  const pathStr = baseProjectsDirPathStr.endsWith(sysSeparator)
     ? baseProjectsDirPathStr
-    : baseProjectsDirPathStr + '/';
+    : baseProjectsDirPathStr + sysSeparator;
   for (const itemPath of allBaseProjectDirPaths) {
     if (itemPath === pathStr) {
       paths = [itemPath];

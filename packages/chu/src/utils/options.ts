@@ -1,4 +1,4 @@
-import { createSchema, exit, logger, validate } from '@anmeng/utils';
+import { createSchema, exit, fsExtra, logger, validate } from '@anmeng/utils';
 import fs from 'fs';
 import { getRcPath } from './rcFile';
 
@@ -10,6 +10,11 @@ const schema = createSchema((joi: any) => {
     baseProjectsDirPaths: joi.array().items(joi.string()),
   });
 });
+
+const churcJson = {
+  otherNpmSource: {},
+  baseProjectsDirPaths: [],
+};
 
 let cachedOptions: any;
 export const loadOptions = () => {
@@ -36,6 +41,8 @@ export const loadOptions = () => {
     });
     return cachedOptions;
   } else {
+    fsExtra.writeFile(rcPath, JSON.stringify(churcJson), 'utf-8');
+    logger.info(`~/.churc init success ！`);
     return {};
   }
 };

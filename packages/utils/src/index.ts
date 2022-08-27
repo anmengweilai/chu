@@ -25,7 +25,14 @@ import Generator from './Generator/Generator';
 import { isLocalDev } from './methods/isLocalDev';
 import * as logger from './methods/logger';
 
-export { hasGit, hasPnpm, hasYarn } from './methods/env';
+export {
+  hasGit,
+  hasPnpm,
+  hasYarn,
+  isLinux,
+  isMacintosh,
+  isWindows,
+} from './methods/env';
 export { exit, exitProcess } from './methods/exit';
 export { getObjVal, setObjVal, unsetObjVal } from './methods/setObject';
 export { createSchema, validate, validateSync } from './methods/validate';

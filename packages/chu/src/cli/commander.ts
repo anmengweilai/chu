@@ -18,7 +18,7 @@ export const settingCommandsOptions = async () => {
     .command('setting')
     .description('setup development environment ')
     .option('-c,-choose <registry-name>', 'choose need npm registry url')
-    .action((value) => {
+    .action((value: any) => {
       settingNpmRegistry(value);
     });
 
@@ -89,18 +89,21 @@ export const settingCommandsOptions = async () => {
     console.log();
   });
 
-  program.commands.forEach((c) => c.on('--help', () => console.log()));
+  program.commands.forEach(
+    (c: { on: (arg0: string, arg1: () => void) => any }) =>
+      c.on('--help', () => console.log()),
+  );
   program.parse(process.argv);
 };
 
 function suggestCommands(unknownCommand: string) {
-  const availableCommands = program.commands.map((cmd) => {
+  const availableCommands = program.commands.map((cmd: { name: () => any }) => {
     return cmd.name();
   });
 
   let suggestion: string | undefined;
 
-  availableCommands.forEach((cmd) => {
+  availableCommands.forEach((cmd: string) => {
     const isBestMatch =
       leven(cmd, unknownCommand) < leven(suggestion || '', unknownCommand);
     if (leven(cmd, unknownCommand) < 3 && isBestMatch) {
