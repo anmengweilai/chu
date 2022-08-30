@@ -38,7 +38,7 @@ export default async function (
     });
 
     allBaseProjectDirPaths = allBaseProjectDirPaths.concat(
-      projectDirPaths.map((path) => {
+      projectDirPaths.map((path: string) => {
         return join(basePath, path.split('.git/config')[0]);
       }),
     );
