@@ -16,3 +16,15 @@ export const DEFAULT_CHU_RC_JSON = {
 export const DEFAULT_CHU_ICON_FONT_FILE_NAME = 'chu.iconfont.config';
 
 export const CONFIG_FILE_TYPES = ['ts', 'js', 'json'];
+
+export const VS_CODE = 'Visual Studio Code';
+
+export const WEB_STORM = 'webstorm';
+
+export const EDITORS_TYPE = {
+  vs: VS_CODE,
+  vscode: VS_CODE,
+  'visual studio code': VS_CODE,
+  ws: WEB_STORM,
+  webstorm: WEB_STORM,
+};

@@ -1,15 +1,28 @@
-import { exit, fastGlob, fsExtra, isWindows, logger } from '@anmeng/utils';
+import {
+  execa,
+  exit,
+  fastGlob,
+  fsExtra,
+  isLinux,
+  isMacintosh,
+  isWindows,
+  logger,
+} from '@anmeng/utils';
 import inquirer, { ChoiceOptions } from 'inquirer';
 // import os from 'os';
 import { join, sep } from 'path';
+import { EDITORS_TYPE } from '../constants';
 import createProjectPathsPrompt from '../promptModules/projectPaths';
 import { dataFilter } from '../utils/dataFilter';
 import { loadOptions } from '../utils/options';
 
-export default async function (
-  value: { filter?: string; choose?: string },
-  _options?: any,
-) {
+interface ValueParams {
+  filter?: string;
+  choose?: string;
+  open?: string;
+}
+
+export default async function (value: ValueParams, _options?: any) {
   // const homeDir = os.homedir();
 
   let { baseProjectsDirPaths } = (await loadOptions()) as {
@@ -45,7 +58,11 @@ export default async function (
   }
 
   if (value.choose) {
-    await chooseProjectOnThree(allBaseProjectDirPaths, baseProjectsDirPaths);
+    await chooseProjectOnThree(
+      allBaseProjectDirPaths,
+      baseProjectsDirPaths,
+      value,
+    );
   } else {
     await chooseProjectOnList(
       allBaseProjectDirPaths,
@@ -59,7 +76,7 @@ export default async function (
 async function chooseProjectOnList(
   allBaseProjectDirPaths: string[],
   baseProjectsDirPaths: string[],
-  value: { filter?: string; choose?: string },
+  value: ValueParams,
 ) {
   let choices: ChoiceOptions[] = [];
   for (let basePath of baseProjectsDirPaths) {
@@ -104,12 +121,14 @@ async function chooseProjectOnList(
     chooseProject: string;
   };
   // TODO: linux等系统无法通过node的子进程操作父进程目录 可考虑 ~/.bash_profile 内相关函数操作但是未能成功
+  await openProjectInEditor(value.open, chooseProject);
   logger.event(`cd ${chooseProject}`);
 }
 
 async function chooseProjectOnThree(
   allBaseProjectDirPaths: string[],
   baseProjectsDirPaths: string[],
+  value: ValueParams,
 ) {
   const choices: ChoiceOptions[] = baseProjectsDirPaths.map((item) => {
     return {
@@ -130,12 +149,13 @@ async function chooseProjectOnThree(
     item.includes(baseProjectsDirPath),
   );
 
-  await generatePrompt(paths, baseProjectsDirPath);
+  await generatePrompt(paths, baseProjectsDirPath, value);
 }
 
 async function generatePrompt(
   allBaseProjectDirPaths: string[],
   baseProjectsDirPath: string,
+  value: ValueParams,
 ) {
   const hasPath: string[] = [];
   const choices: ChoiceOptions[] = [];
@@ -174,9 +194,27 @@ async function generatePrompt(
   }
 
   if (paths.length > 1) {
-    await generatePrompt(paths, baseProjectsDirPathStr);
+    await generatePrompt(paths, baseProjectsDirPathStr, value);
   } else {
-    logger.event(`cd ${paths[0]}`);
+    const [pathStr] = paths;
+    await openProjectInEditor(value.open, pathStr);
+    logger.event(`cd ${pathStr}`);
     return exit();
   }
 }
+
+type EditorNames = keyof typeof EDITORS_TYPE;
+
+const openProjectInEditor = async (open?: string, pathStr?: string) => {
+  if (!open) return false;
+  const openStr =
+    EDITORS_TYPE[open.toString().toLocaleLowerCase() as EditorNames] ||
+    EDITORS_TYPE.vs;
+  if (isWindows) {
+    logger.error('Not supported windows！');
+    return false;
+  }
+  if (isLinux || isMacintosh) {
+    execa.execaSync('open', ['-a', openStr, pathStr]);
+  }
+};

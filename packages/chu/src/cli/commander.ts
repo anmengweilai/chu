@@ -56,6 +56,7 @@ export const settingCommandsOptions = async () => {
     .description('go to need project')
     .option('-f , --filter <value>', 'filter project')
     .option('-c , --choose', 'choose project')
+    .option('-o , --open <value>', 'open in editors')
     .action(async (value: any, options: any) => {
       await goToProject(value, options);
     });
