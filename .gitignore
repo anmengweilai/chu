@@ -163,3 +163,7 @@ dist
 
 # .churc
 .churc
+
+
+packages/utils/src/methods/objInit.test.ts
+packages/utils/src/methods/objInit.ts
