@@ -205,9 +205,9 @@ async function generatePrompt(
 
 type EditorNames = keyof typeof EDITORS_TYPE;
 
-const openProjectInEditor = async (open?: string, pathStr?: string) => {
+const openProjectInEditor = async (open?: string, pathStr: string = '') => {
   if (!open) return false;
-  const openStr =
+  const openStr: string =
     EDITORS_TYPE[open.toString().toLocaleLowerCase() as EditorNames] ||
     EDITORS_TYPE.vs;
   if (isWindows) {
