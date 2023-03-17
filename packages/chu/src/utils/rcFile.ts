@@ -19,9 +19,10 @@ const migrateWindowsConfigPath = (file: string) => {
   if (platform !== 'win32') {
     return;
   }
+  debugger;
   const appData = process.env.APPDATA;
   if (appData) {
-    const rcDir = path.join(appData, 'vue');
+    const rcDir = path.join(appData, 'chu');
     const rcFile = path.join(rcDir, file);
     const properRcFile = path.join(os.homedir(), file);
     if (fsExtra.existsSync(rcFile)) {

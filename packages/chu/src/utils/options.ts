@@ -29,7 +29,10 @@ export const loadOptions = () => {
         `Error loading saved preferences: ` +
           `~/.churc may be corrupted or have syntax errors. ` +
           `Please fix/delete it and re-run chu-cli in manual mode.\n` +
-          `(${e?.message})`,
+          `(${e?.message})` +
+          `templateJson：\n
+          ${JSON.stringify(churcJson)}
+          `,
       );
       exit(1);
     }
