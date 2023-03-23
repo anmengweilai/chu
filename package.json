@@ -2,7 +2,7 @@
   "private": true,
   "keywords": [],
   "license": "ISC",
-  "author": "",
+  "author": "ammengweilai",
   "main": "index.js",
   "workspaces": [
     "packages/*"

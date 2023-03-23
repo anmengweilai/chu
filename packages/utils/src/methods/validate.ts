@@ -1,9 +1,10 @@
+import type Joi from '../../compiled/@hapi/joi';
 import type { Schema } from '../../compiled/@hapi/joi';
 import joi from '../../compiled/@hapi/joi';
 import { exit } from './exit';
 import { isLocalDev } from './isLocalDev';
 
-export const createSchema = (fn: Function) => {
+export const createSchema = (fn: (joi: Joi.Root) => Schema) => {
   let schema = fn(joi);
   if (typeof schema === 'object' && typeof schema.validate !== 'function') {
     schema = joi.object(schema);

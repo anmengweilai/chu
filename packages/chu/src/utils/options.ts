@@ -4,7 +4,8 @@ import { getRcPath } from './rcFile';
 
 const rcPath = getRcPath('.churc');
 
-const schema = createSchema((joi: any) => {
+// @ts-ignore
+const schema = createSchema((joi) => {
   return joi.object().keys({
     otherNpmSource: joi.object(),
     baseProjectsDirPaths: joi.array().items(joi.string()),
