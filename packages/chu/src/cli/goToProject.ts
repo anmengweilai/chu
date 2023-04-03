@@ -148,6 +148,9 @@ async function chooseProjectOnThree(
   let paths = allBaseProjectDirPaths.filter((item) =>
     item.includes(baseProjectsDirPath),
   );
+  if (baseProjectsDirPath.includes('...')) {
+    paths.pop();
+  }
 
   await generatePrompt(paths, baseProjectsDirPath, value);
 }
@@ -174,7 +177,7 @@ async function generatePrompt(
   });
 
   const { chooseProject: baseProjectsDirPathStr } = (await inquirer.prompt([
-    createProjectPathsPrompt(choices),
+    createProjectPathsPrompt([{ name: '↪︎ ...', value: '...' }, ...choices]),
   ])) as {
     chooseProject: string;
   };
