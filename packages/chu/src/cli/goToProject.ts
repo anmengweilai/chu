@@ -185,6 +185,9 @@ async function chooseProjectOnThree(
     }
     if (typeof chooseProject === 'string') {
       currentPaths.push(chooseProject);
+      pathStr = changeSep(
+        changeSep(baseProjectsDirPath) + currentPaths.join(sep),
+      );
       lodash.isEmpty(lodash.get(choicesTree, currentPaths)) && (isEnd = true);
     }
   }
