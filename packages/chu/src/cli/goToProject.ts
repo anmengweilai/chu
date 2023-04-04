@@ -148,9 +148,6 @@ async function chooseProjectOnThree(
   let paths = allBaseProjectDirPaths.filter((item) =>
     item.includes(baseProjectsDirPath),
   );
-  if (baseProjectsDirPath.includes('...')) {
-    paths.pop();
-  }
 
   await generatePrompt(paths, baseProjectsDirPath, value);
 }
@@ -193,6 +190,9 @@ async function generatePrompt(
     }
     if (itemPath.includes(pathStr)) {
       paths.push(itemPath);
+    }
+    if (pathStr === '...') {
+      paths.pop();
     }
   }
 
