@@ -6,21 +6,27 @@ import {
   isLinux,
   isMacintosh,
   isWindows,
+  lodash,
   logger,
 } from '@anmeng/utils';
 import inquirer, { ChoiceOptions } from 'inquirer';
-// import os from 'os';
 import { join, sep } from 'path';
 import { EDITORS_TYPE } from '../constants';
 import createProjectPathsPrompt from '../promptModules/projectPaths';
 import { dataFilter } from '../utils/dataFilter';
 import { loadOptions } from '../utils/options';
 
-interface ValueParams {
+export interface ValueParams {
   filter?: string;
   choose?: string;
   open?: string;
 }
+
+export interface TreeMapItem {
+  [key: string]: TreeMapItem;
+}
+
+const currentPaths: string[] = [];
 
 export default async function (value: ValueParams, _options?: any) {
   // const homeDir = os.homedir();
@@ -137,73 +143,77 @@ async function chooseProjectOnThree(
     };
   });
 
-  let { chooseProject: baseProjectsDirPath } = (await inquirer.prompt([
-    createProjectPathsPrompt(choices),
-  ])) as {
-    chooseProject: string;
-  };
+  let { chooseProject: baseProjectsDirPath } = await inquirer.prompt(
+    [createProjectPathsPrompt(choices)],
+    {},
+  );
   if (baseProjectsDirPath.charAt(0) !== sep) {
     baseProjectsDirPath = `${sep}${baseProjectsDirPath}`;
   }
-  let paths = allBaseProjectDirPaths.filter((item) =>
-    item.includes(baseProjectsDirPath),
-  );
 
-  await generatePrompt(paths, baseProjectsDirPath, value);
+  const choicesTree = await generatePrompt(
+    allBaseProjectDirPaths,
+    baseProjectsDirPath,
+  );
+  let isEnd = false;
+  let pathStr = changeSep(
+    changeSep(baseProjectsDirPath) + currentPaths.join(sep),
+  );
+  while (!isEnd) {
+    const lastPath = currentPaths[currentPaths.length - 1];
+    let keyValues = [];
+    if (lastPath) {
+      keyValues = ['...', ...Object.keys(choicesTree[lastPath] || {})];
+    } else {
+      keyValues = Object.keys(choicesTree || {});
+    }
+    const defChoices = keyValues.map((item) => {
+      return {
+        name: item,
+        value: item,
+      };
+    });
+    pathStr = changeSep(
+      changeSep(baseProjectsDirPath) + currentPaths.join(sep),
+    );
+    const { chooseProject } = await inquirer.prompt([
+      createProjectPathsPrompt(defChoices, pathStr),
+    ]);
+    if (chooseProject === '...') {
+      currentPaths.pop();
+      continue;
+    }
+    if (typeof chooseProject === 'string') {
+      currentPaths.push(chooseProject);
+      lodash.isEmpty(lodash.get(choicesTree, currentPaths)) && (isEnd = true);
+    }
+  }
+
+  pathStr && (await openProjectInEditor(value.open, pathStr));
+  pathStr && logger.event(`cd ${pathStr}`);
+  return exit();
 }
 
 async function generatePrompt(
   allBaseProjectDirPaths: string[],
   baseProjectsDirPath: string,
-  value: ValueParams,
 ) {
-  const hasPath: string[] = [];
-  const choices: ChoiceOptions[] = [];
-  const baseDirPath = baseProjectsDirPath.endsWith(sep)
-    ? baseProjectsDirPath.substring(0, baseProjectsDirPath.length - 1)
-    : baseProjectsDirPath;
-  allBaseProjectDirPaths.forEach((item) => {
-    const name = item.replace(baseDirPath, '').split(sep)[1];
-    if (!hasPath.includes(name) && item.includes(baseDirPath)) {
-      hasPath.push(name);
-      choices.push({
-        name,
-        value: join(baseDirPath, name),
-      });
-    }
-  });
-
-  const { chooseProject: baseProjectsDirPathStr } = (await inquirer.prompt([
-    createProjectPathsPrompt([{ name: '↪︎ ...', value: '...' }, ...choices]),
-  ])) as {
-    chooseProject: string;
-  };
-
-  let paths = [];
-  const pathStr = baseProjectsDirPathStr.endsWith(sep)
-    ? baseProjectsDirPathStr
-    : baseProjectsDirPathStr + sep;
-  for (const itemPath of allBaseProjectDirPaths) {
-    if (itemPath === pathStr) {
-      paths = [itemPath];
-      break;
-    }
-    if (itemPath.includes(pathStr)) {
-      paths.push(itemPath);
-    }
-    if (pathStr === '...') {
-      paths.pop();
-    }
+  const treeMap: TreeMapItem = {};
+  const includePaths: string[] = allBaseProjectDirPaths.filter((p) =>
+    p.includes(baseProjectsDirPath),
+  );
+  for (const baseProPath of includePaths) {
+    const needPath = baseProPath.replace(baseProjectsDirPath, '');
+    const needPathArr = needPath.split(sep).filter(Boolean);
+    needPathArr.reduce((pre, cur) => {
+      if (!pre[cur]) {
+        pre[cur] = {};
+      }
+      return pre[cur];
+    }, treeMap);
   }
 
-  if (paths.length > 1) {
-    await generatePrompt(paths, baseProjectsDirPathStr, value);
-  } else {
-    const [pathStr] = paths;
-    await openProjectInEditor(value.open, pathStr);
-    logger.event(`cd ${pathStr}`);
-    return exit();
-  }
+  return treeMap;
 }
 
 type EditorNames = keyof typeof EDITORS_TYPE;
@@ -220,4 +230,8 @@ const openProjectInEditor = async (open?: string, pathStr: string = '') => {
   if (isLinux || isMacintosh) {
     execa.execaSync('open', ['-a', openStr, pathStr]);
   }
+};
+
+const changeSep = (str: string) => {
+  return str.endsWith(sep) ? str : `${str}${sep}`;
 };
